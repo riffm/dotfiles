@@ -1,0 +1,15 @@
+PS1='\W \u\$ '
+export PS1='\u(\j)\W\$ '
+alias ls="ls -GahA"
+
+if [ -f /opt/local/etc/bash_completion ]; then
+    . /opt/local/etc/bash_completion
+fi
+
+
+export PATH=/opt/local/bin:/opt/local/sbin:$PATH
+
+# golang
+export GOROOT=/opt/local
+export GOOS=darwin
+export GOARCH=amd64

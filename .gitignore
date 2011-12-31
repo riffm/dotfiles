@@ -1,0 +1,5 @@
+*.o
+*.pyc
+*.pyo
+*.sw[pn]
+vim/.netrwhist

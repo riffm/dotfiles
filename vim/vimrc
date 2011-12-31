@@ -1,0 +1,107 @@
+set nocompatible
+set nobackup
+set history=50
+set showcmd
+set ruler
+set hlsearch
+set incsearch
+set smartcase
+set cmdheight=1
+set hidden
+syntax enable
+filetype plugin indent on
+set fencs=utf-8,cp1251,koi8-r,ucs-2,cp866
+set encoding=utf-8
+colo default
+"set t_Co=256
+
+
+" text wrappping and 80 digits limit
+set wrap
+set textwidth=79
+set formatoptions=qrn1
+
+" movement
+nnoremap j gj
+nnoremap k gk
+
+if has("gui_running")
+    colo molokai
+    set guioptions=egmrt
+    set guifont=Monaco:h14
+    "set colorcolumn=85
+endif
+
+
+set pastetoggle=<F3>
+
+
+" when ':set list' you see <tab> and trails more usable 
+set list
+set listchars=tab:>.,trail:.,extends:#,nbsp:.
+" set nu
+set sw=4 ts=4 sta et
+au FileType crontab,fstab,make set noet ts=8 sw=8
+au BufEnter *.py set ai sw=4 ts=8 sts=4 sta et fo=croql tw=80
+au BufEnter *.js set ai sw=2 ts=2 sta et fo=croql tw=80
+au BufEnter *.html set ai sw=2 ts=2 sta et fo=croql tw=100
+au BufEnter *.sh set ai sw=4 ts=4 sta et tw=80
+au BufEnter *.mint set filetype=mint ai sw=2 ts=2 sta et fo=croql tw=80
+
+" STATUS STRING
+set wildmenu
+set laststatus=2
+set statusline=%<(%n)\ %f\ [%Y%R%W]%1*%{(&modified)?'\ [+]\ ':''}%*\ (%b)%=%c%V,%l\ %P
+
+
+" splits navigation
+map <C-h> <C-w>h
+map <C-j> <C-w>j
+map <C-k> <C-w>k
+map <C-l> <C-w>l
+
+" On/off line numbers by F11
+imap <F11> <Esc>:set<Space>nu!<CR>a
+nmap <F11> :set<Space>nu!<CR>
+
+" новая вкладка
+nnoremap <C-T> :tabnew<CR>
+inoremap <C-T> <C-O>:tabnew<CR>
+vnoremap <C-T> <ESC>:tabnew<CR>
+
+" move to files location when file is opened
+" useful for :shell cmd
+"if has("autocmd")
+"    autocmd bufenter * :call CheckOpenedPath()
+"endif
+
+"function! CheckOpenedPath()
+"    let l:new_location = fnamemodify(bufname("%"), ":p:h")
+"    if match(l:new_location, "^scp://") == -1
+"        :lcd %:p:h
+"    endif
+"endfunction
+
+
+" ack
+nnoremap <leader>a :Ack
+
+
+" Tell vim to remember certain things when we exit
+"  '10  :  marks will be remembered for up to 10 previously edited files
+"  "100 :  will save up to 100 lines for each register
+"  :20  :  up to 20 lines of command-line history will be remembered
+"  %    :  saves and restores the buffer list
+"  n... :  where to save the viminfo files
+set viminfo='10,\"100,:20,%,n~/.viminfo
+function! ResCur()
+    if line("'\"") <= line("$")
+        normal! g`"
+            return 1
+    endif
+endfunction
+
+augroup resCur
+    autocmd!
+    autocmd BufWinEnter * call ResCur()
+augroup END
