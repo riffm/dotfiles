@@ -6,8 +6,8 @@ install-vim:
 	ln -s ~/.vim/vimrc ~/.vimrc
 
 install-bash:
-	rm -f ~/.bashrc
-	ln -s `pwd`/bash/bashrc ~/.bashrc
+	rm -f ~/.profile
+	ln -s `pwd`/bash/bashrc ~/.profile
 
 install-git:
 	rm -f ~/.gitconfig
