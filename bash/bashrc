@@ -6,8 +6,9 @@ if [ -f /opt/local/etc/bash_completion ]; then
     . /opt/local/etc/bash_completion
 fi
 
-
+# MacPorts Installer addition on 2012-01-01_at_18:48:25: adding an appropriate PATH variable for use with MacPorts.
 export PATH=/opt/local/bin:/opt/local/sbin:$PATH
+# Finished adapting your PATH environment variable for use with MacPorts.
 
 # golang
 export GOROOT=/opt/local
