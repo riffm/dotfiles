@@ -12,7 +12,7 @@ syntax enable
 filetype plugin indent on
 set fencs=utf-8,cp1251,koi8-r,ucs-2,cp866
 set encoding=utf-8
-colo default
+colo molokai
 "set t_Co=256
 
 
