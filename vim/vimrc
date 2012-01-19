@@ -19,16 +19,10 @@ call vundle#rc()
 
 Bundle 'gmarik/vundle'
 
-" github
-Bundle 'tpope/vim-fugitive'
-Bundle 'Lokaltog/vim-easymotion'
-Bundle 'rstacruz/sparkup', {'rtp': 'vim/'}
-Bundle 'tpope/vim-rails.git'
-
-" non github repos
-Bundle 'git://git.wincent.com/command-t.git'
 
 filetype plugin indent on     " required! 
+" VUNDLE MAGIC END
+
 syntax enable
 colo molokai
 
