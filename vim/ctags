@@ -1,3 +1,4 @@
 --python-kinds=-i
 --exclude=*/build/*
 --exclude=*.sw[pon]
+--links=no
