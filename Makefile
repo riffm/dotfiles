@@ -1,9 +1,10 @@
 install: install-vim install-bash install-git install-hg
 
 install-vim:
-	rm -rf ~/.vim ~/.vimrc
+	rm -rf ~/.vim ~/.vimrc ~/.ctags
 	ln -s `pwd`/vim ~/.vim
 	ln -s ~/.vim/vimrc ~/.vimrc
+	ln -s ~/.vim/ctags ~/.ctags
 
 install-bash:
 	rm -f ~/.profile

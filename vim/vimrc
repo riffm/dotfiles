@@ -64,27 +64,6 @@ map <C-l> <C-w>l
 imap <F11> <Esc>:set<Space>nu!<CR>a
 nmap <F11> :set<Space>nu!<CR>
 
-" новая вкладка
-nnoremap <C-T> :tabnew<CR>
-inoremap <C-T> <C-O>:tabnew<CR>
-vnoremap <C-T> <ESC>:tabnew<CR>
-
-" move to files location when file is opened
-" useful for :shell cmd
-"if has("autocmd")
-"    autocmd bufenter * :call CheckOpenedPath()
-"endif
-
-"function! CheckOpenedPath()
-"    let l:new_location = fnamemodify(bufname("%"), ":p:h")
-"    if match(l:new_location, "^scp://") == -1
-"        :lcd %:p:h
-"    endif
-"endfunction
-
-
-" ack
-nnoremap <leader>a :Ack
 
 
 " Tell vim to remember certain things when we exit
