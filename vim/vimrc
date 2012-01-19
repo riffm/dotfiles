@@ -1,19 +1,36 @@
-set nocompatible
-set nobackup
-set history=50
-set showcmd
+set fencs=utf-8,cp1251,koi8-r,ucs-2,cp866
 set ruler
+set hidden
+set history=50
 set hlsearch
+set showcmd
+set nobackup
+set encoding=utf-8
+set cmdheight=1
 set incsearch
 set smartcase
-set cmdheight=1
-set hidden
+set nocompatible
+set pastetoggle=<F3>
+
+" VUNDLE MAGIC
+filetype off                   " required!
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+
+Bundle 'gmarik/vundle'
+
+" github
+Bundle 'tpope/vim-fugitive'
+Bundle 'Lokaltog/vim-easymotion'
+Bundle 'rstacruz/sparkup', {'rtp': 'vim/'}
+Bundle 'tpope/vim-rails.git'
+
+" non github repos
+Bundle 'git://git.wincent.com/command-t.git'
+
+filetype plugin indent on     " required! 
 syntax enable
-filetype plugin indent on
-set fencs=utf-8,cp1251,koi8-r,ucs-2,cp866
-set encoding=utf-8
 colo molokai
-"set t_Co=256
 
 
 " text wrappping and 80 digits limit
@@ -21,24 +38,22 @@ set wrap
 set textwidth=79
 set formatoptions=qrn1
 
+
 " movement
 nnoremap j gj
 nnoremap k gk
 
+
 if has("gui_running")
-    colo molokai
     set guioptions=egmrt
     set guifont=Monaco:h14
-    "set colorcolumn=85
 endif
-
-
-set pastetoggle=<F3>
 
 
 " when ':set list' you see <tab> and trails more usable 
 set list
 set listchars=tab:>.,trail:.,extends:#,nbsp:.
+
 " set nu
 set sw=4 ts=4 sta et
 au FileType crontab,fstab,make set noet ts=8 sw=8
@@ -48,22 +63,16 @@ au BufEnter *.html set ai sw=2 ts=2 sta et fo=croql tw=100
 au BufEnter *.sh set ai sw=4 ts=4 sta et tw=80
 au BufEnter *.mint set filetype=mint ai sw=2 ts=2 sta et fo=croql tw=80
 
-" STATUS STRING
+
+" status string
 set wildmenu
 set laststatus=2
 set statusline=%<(%n)\ %f\ [%Y%R%W]%1*%{(&modified)?'\ [+]\ ':''}%*\ (%b)%=%c%V,%l\ %P
 
 
-" splits navigation
-map <C-h> <C-w>h
-map <C-j> <C-w>j
-map <C-k> <C-w>k
-map <C-l> <C-w>l
-
 " On/off line numbers by F11
 imap <F11> <Esc>:set<Space>nu!<CR>a
 nmap <F11> :set<Space>nu!<CR>
-
 
 
 " Tell vim to remember certain things when we exit
