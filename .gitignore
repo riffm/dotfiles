@@ -3,3 +3,4 @@
 *.pyo
 *.sw[pn]
 vim/.netrwhist
+vim/bundle
