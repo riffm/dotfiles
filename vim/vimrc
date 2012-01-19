@@ -21,6 +21,7 @@ set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
 Bundle 'gmarik/vundle'
+Bundle 'tpope/vim-markdown'
 Bundle 'kchmck/vim-coffee-script'
 Bundle 'kevinw/pyflakes-vim'
 Bundle 'nvie/vim-pep8'
