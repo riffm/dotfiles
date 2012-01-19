@@ -1,30 +1,30 @@
-set fencs=utf-8,cp1251,koi8-r,ucs-2,cp866
-set ruler
+set nocompatible
+set nobackup
 set hidden
+set ruler
 set history=50
 set hlsearch
+set incsearch
 set showcmd
-set nobackup
+set fencs=utf-8,cp1251,koi8-r,ucs-2,cp866
 set encoding=utf-8
 set cmdheight=1
-set incsearch
 set smartcase
-set nocompatible
 set pastetoggle=<F3>
+syntax enable
+colo molokai
 
-" VUNDLE MAGIC
-filetype off                   " required!
+
+" VUNDLE
+filetype off
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
 Bundle 'gmarik/vundle'
+Bundle 'kchmck/vim-coffee-script'
 
-
-filetype plugin indent on     " required! 
-" VUNDLE MAGIC END
-
-syntax enable
-colo molokai
+filetype plugin indent on
+" VUNDLE END
 
 
 " text wrappping and 80 digits limit
