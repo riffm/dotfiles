@@ -1,4 +1,4 @@
-export PS1="\\033[1;32m\u\\033[0m@\h(\j)\\033[1;32m\W\\033[0m\$ "
+export PS1="\[\e[01;32m\]\u\[\e[00m\] @\h(\j)\[\e[01;31m\] \W\[\e[00m\] \$ "
 alias ls="ls -GahA"
 
 if [ -f /opt/local/etc/bash_completion ]; then
