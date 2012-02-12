@@ -12,7 +12,9 @@ set cmdheight=1
 set smartcase
 set pastetoggle=<F3>
 syntax enable
-colo molokai
+set background=dark
+" seems that something is broken
+"colo solarized
 
 
 " VUNDLE
@@ -25,6 +27,7 @@ Bundle 'tpope/vim-markdown'
 Bundle 'kchmck/vim-coffee-script'
 Bundle 'kevinw/pyflakes-vim'
 Bundle 'nvie/vim-pep8'
+Bundle 'altercation/vim-colors-solarized'
 
 filetype plugin indent on
 " VUNDLE END
