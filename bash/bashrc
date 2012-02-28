@@ -12,7 +12,9 @@ export PATH=/opt/local/bin:/opt/local/sbin:$PATH
 # GHC
 export PATH="$HOME/Library/Haskell/bin:$PATH"
 
-# golang
-export GOROOT=/opt/local
+# Golang
+export GOROOT=$HOME/go
 export GOOS=darwin
 export GOARCH=amd64
+export GOPATH="$HOME/proj/go"
+export PATH="$HOME/go/bin:$PATH"

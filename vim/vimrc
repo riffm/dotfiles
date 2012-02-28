@@ -14,6 +14,9 @@ set pastetoggle=<F3>
 syntax enable
 set background=dark
 
+" Golang
+set rtp+=$GOROOT/misc/vim
+au BufEnter *.go set ai noet ts=8 sw=8 sta tw=80 nolist
 
 " VUNDLE
 filetype off
