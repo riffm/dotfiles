@@ -15,5 +15,6 @@ install-git:
 	ln -s `pwd`/git/config ~/.gitconfig
 
 install-hg:
+	# make sure you have Dulwich installed for hg-git
 	rm -f ~/.hgrc
 	ln -s `pwd`/hg/hgrc ~/.hgrc

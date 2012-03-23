@@ -6,6 +6,8 @@ pager =
 graphlog =
 color =
 record =
+bookmarks =
+;hggit = ~/dotfiles/hg/hg-git/hggit
 
 [pager]
 pager = less -R
