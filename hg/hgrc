@@ -5,6 +5,7 @@ username=Tim Perevezentsev <riffm2005@gmail.com>
 pager =
 graphlog =
 color =
+record =
 
 [pager]
 pager = less -R
