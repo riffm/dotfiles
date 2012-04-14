@@ -18,6 +18,9 @@ set background=dark
 set rtp+=$GOROOT/misc/vim
 au BufEnter *.go set ai noet ts=8 sw=8 sta tw=80 nolist
 
+" manpage plugin
+runtime ftplugin/man.vim
+
 " VUNDLE
 filetype off
 set rtp+=~/.vim/bundle/vundle/
