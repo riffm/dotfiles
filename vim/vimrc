@@ -100,3 +100,7 @@ augroup resCur
     autocmd!
     autocmd BufWinEnter * call ResCur()
 augroup END
+
+
+" convert camel case to underscore
+nmap <Leader>u viw"=tolower(substitute("<C-R><C-W>", "[A-Z]\\+", "_\\0", "g"))<C-M>p
