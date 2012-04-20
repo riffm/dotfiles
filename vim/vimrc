@@ -37,7 +37,7 @@ filetype plugin indent on
 " VUNDLE END
 
 
-colo solarized
+colo default
 
 
 " text wrappping and 80 digits limit
