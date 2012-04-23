@@ -38,7 +38,7 @@ filetype plugin indent on
 " VUNDLE END
 
 
-colo solarized
+colo default
 
 
 " text wrappping and 80 digits limit
@@ -101,3 +101,10 @@ augroup resCur
     autocmd!
     autocmd BufWinEnter * call ResCur()
 augroup END
+
+" open/source vimrc
+nnoremap <leader>ev :split $MYVIMRC<cr>
+nnoremap <leader>sv :source $MYVIMRC<cr>
+
+" convert camel case to underscore
+nnoremap <Leader>us viw"=tolower(substitute("<C-R><C-W>", "[A-Z]\\+", "_\\0", "g"))<C-M>p
