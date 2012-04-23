@@ -1,4 +1,4 @@
-install: install-vim install-bash install-git install-hg
+install: install-vim install-bash install-git install-hg install-tmux
 
 install-vim:
 	rm -rf ~/.vim ~/.vimrc ~/.ctags
@@ -18,3 +18,7 @@ install-hg:
 	# make sure you have Dulwich installed for hg-git
 	rm -f ~/.hgrc
 	ln -s `pwd`/hg/hgrc ~/.hgrc
+
+install-tmux:
+	rm -f ~/.tmux.conf
+	ln -s `pwd`/tmux.conf ~/.tmux.conf
