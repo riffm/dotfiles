@@ -107,3 +107,6 @@ nnoremap <leader>sv :source $MYVIMRC<cr>
 
 " convert camel case to underscore
 nnoremap <Leader>us viw"=tolower(substitute("<C-R><C-W>", "[A-Z]\\+", "_\\0", "g"))<C-M>p
+
+" grep py files
+nnoremap <leader>gr viwy:gr <c-r>0 $(find . -name '*.py')
