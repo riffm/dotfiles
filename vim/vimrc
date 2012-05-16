@@ -115,3 +115,8 @@ nnoremap <leader>gr viwy:gr <c-r>0 $(find . -name '*.py')
 
 " toggle taglist
 nnoremap <leader>ta :TlistToggle<CR>
+
+
+" hg annotate line
+nnoremap <leader>hga :!hg annotate -cdu <c-r>% \| tail -n+<c-r>=line('.')<cr> \| head -3<cr>
+"\|tail -n+<c-r>"=line('.')\|head -1
