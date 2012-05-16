@@ -33,6 +33,7 @@ Bundle 'kevinw/pyflakes-vim'
 Bundle 'nvie/vim-pep8'
 Bundle 'altercation/vim-colors-solarized'
 Bundle 'vim-scripts/taglist.vim'
+Bundle 'vim-scripts/xmledit'
 
 filetype plugin indent on
 " VUNDLE END
