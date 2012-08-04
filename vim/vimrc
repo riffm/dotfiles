@@ -79,6 +79,8 @@ set wildmenu
 set laststatus=2
 set statusline=%<(%n)\ %f\ [%Y%R%W]%1*%{(&modified)?'\ [+]\ ':''}%*\ (%b)%=%c%V,%l\ %P
 
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip
+
 
 " On/off line numbers by F11
 imap <F11> <Esc>:set<Space>nu!<CR>a
