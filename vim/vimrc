@@ -32,6 +32,7 @@ Bundle 'kchmck/vim-coffee-script'
 Bundle 'kevinw/pyflakes-vim'
 Bundle 'nvie/vim-pep8'
 Bundle 'altercation/vim-colors-solarized'
+Bundle 'kien/ctrlp.vim'
 Bundle 'vim-scripts/taglist.vim'
 Bundle 'vim-scripts/xmledit'
 
