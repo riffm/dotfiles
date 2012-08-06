@@ -8,7 +8,7 @@ graphlog =
 color =
 record =
 bookmarks =
-hggit = ~/dotfiles/hg/hg-git/hggit
+;hggit = ~/dotfiles/hg/hg-git/hggit
 
 [pager]
 pager = less -R
