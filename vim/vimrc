@@ -34,7 +34,8 @@ Bundle 'nvie/vim-pep8'
 Bundle 'altercation/vim-colors-solarized'
 Bundle 'kien/ctrlp.vim'
 Bundle 'vim-scripts/taglist.vim'
-Bundle 'vim-scripts/xmledit'
+"Bundle 'vim-scripts/xmledit'
+Bundle 'vim-scripts/pydoc.vim'
 
 filetype plugin indent on
 " VUNDLE END
