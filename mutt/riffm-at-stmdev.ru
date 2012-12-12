@@ -1,0 +1,5 @@
+set from = "riffm@stmdev.ru"
+set sendmail = "msmtp -a stmdev"
+set spoolfile = "+riffm-at-stmdev.ru/INBOX"
+set mbox = "+riffm-at-stmdev.ru/archive"
+set postponed = "+riffm-at-stmdev.ru/drafts"

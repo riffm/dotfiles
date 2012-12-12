@@ -1,4 +1,4 @@
-install: install-vim install-bash install-git install-hg install-tmux
+install: install-vim install-bash install-git install-hg install-tmux install-mutt
 
 install-vim:
 	rm -rf ~/.vim ~/.vimrc ~/.ctags
@@ -22,3 +22,17 @@ install-hg:
 install-tmux:
 	rm -f ~/.tmux.conf
 	ln -s `pwd`/tmux.conf ~/.tmux.conf
+
+install-mutt:
+	rm -f ~/.mutt
+	ln -s `pwd`/mutt ~/.mutt
+	rm -f ~/.urlview
+	ln -s `pwd`/urlview ~/.urlview
+	rm -f ~/.notmuch-config
+	ln -s `pwd`/notmuch-config ~/.notmuch-config
+	rm -f ~/.msmtprc
+	ln -s `pwd`/msmtprc ~/.msmtprc
+	rm -f ~/.muttrc
+	ln -s `pwd`/muttrc ~/.muttrc
+	rm -f ~/.offlineimaprc
+	ln -s `pwd`/offlineimaprc ~/.offlineimaprc

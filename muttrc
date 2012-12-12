@@ -1,0 +1,114 @@
+set folder = ~/Mail
+set alias_file = ~/.mutt/alias
+set header_cache = ~/.mutt/cache/headers
+#set message_cachedir = ~/.mutt/cache/bodies  # where to store bodies
+set certificate_file = ~/.mutt/certificate
+set mailcap_path = ~/.mutt/mailcap
+set tmpdir = ~/.mutt/temp
+
+set wait_key = no
+set mbox_type = Maildir
+set timeout = 5
+set mail_check = 0
+unset move
+unset confirmappend
+unset mark_old
+set delete
+set quit
+set beep_new
+set pipe_decode
+set thorough_search
+
+
+set status_chars  = " *%A"
+set status_format = "───[ Folder: %f ]───[%r%m messages%?n? (%n new)?%?d? (%d to delete)?%?t? (%t tagged)? ]───%>─%?p?( %p postponed )?───"
+
+ignore *
+unignore from: to: cc: date: subject: reply-to:
+unhdr_order *
+hdr_order from: to: cc: reply-to: date: subject:
+
+set date_format = "%m/%d"
+set index_format = "[%Z]  %D  %-20.20F  %s"
+set sort = threads
+set sort_aux = reverse-last-date-received
+set uncollapse_jump
+set sort_re
+set reply_regexp = "^(([Rr][Ee]?(\[[0-9]+\])?: *)?(\[[^]]+\] *)?)*"
+
+bind index gg first-entry
+bind index G last-entry
+bind index R group-reply
+bind index <tab> sync-mailbox
+bind index <space> collapse-thread
+bind index p recall-message
+bind index J next-unread
+
+macro index O "<shell-escape>offlineimap<enter>" "run offlineimap to sync all mail"
+macro index o "<shell-escape>offlineimap -qf INBOX<enter>" "run offlineimap to sync inbox"
+macro index C "<copy-message>?<toggle-mailboxes>" "copy a message to a mailbox"
+macro index M "<save-message>?<toggle-mailboxes>" "move a message to a mailbox"
+
+set query_command = "contacts -Sf '%eTOKEN%n' '%s' | sed -e 's/TOKEN/\t/g'"
+bind editor \Cn complete-query
+bind editor ^T complete
+
+# pager
+set pager_index_lines = 10
+set pager_context = 3
+set pager_stop
+set menu_scroll
+set tilde
+unset markers
+set quote_regexp = "^( {0,4}[>|:#%]| {0,4}[a-z0-9]+[>|]+)+"
+alternative_order text/plain text/enriched text/html
+bind pager k  previous-line
+bind pager j  next-line
+bind pager gg top
+bind pager G  bottom
+bind pager R  group-reply
+bind attach <return> view-mailcap
+macro pager \Cu "|urlview<enter>" "call urlview to open links"
+bind compose p postpone-message
+
+set realname = "Tim Perevezentsev"
+set envelope_from
+set sig_dashes
+set edit_headers
+set fast_reply
+set askcc
+set fcc_attach
+unset mime_forward
+set forward_format = "Fwd: %s"
+set forward_decode
+set attribution = "On %d, %n wrote:"
+set reply_to
+set reverse_name
+set include
+set forward_quote
+set editor = "vim"
+set sendmail_wait = 0
+unset record
+
+# search
+macro index / "<enter-command>unset wait_key<enter><shell-escape>~/.mutt/mutt-notmuch-py $folder/search<enter><change-folder-readonly>+search<enter>" "search mail (using notmuch)"
+
+# switching accounts
+folder-hook riffm-at-stmdev.ru source ~/.mutt/riffm-at-stmdev.ru
+folder-hook me-at-riffm.name source ~/.mutt/me-at-riffm.name
+folder-hook riffm2005-at-gmail.com source ~/.mutt/riffm2005-at-gmail.com
+
+# default account
+source ~/.mutt/riffm2005-at-gmail.com
+
+mailboxes +riffm-at-stmdev.ru/INBOX \
+          +riffm-at-stmdev.ru/drafts \
+          +riffm-at-stmdev.ru/sent
+mailboxes +me-at-riffm.name/INBOX \
+          +me-at-riffm.name/drafts \
+          +me-at-riffm.name/sent
+mailboxes +riffm2005-at-gmail.com/INBOX \
+          +riffm2005-at-gmail.com/drafts \
+          +riffm2005-at-gmail.com/sent
+
+source ~/.mutt/badwolf.muttrc
