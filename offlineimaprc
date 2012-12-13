@@ -36,6 +36,7 @@ nametrans = lambda folder: {'[Gmail]/Drafts':    'drafts',
 folderfilter = lambda folder: folder not in ['[Gmail]/Trash',
                                              '[Gmail]/Important',
                                              '[Gmail]/Spam',
+                                             '[Gmail]/Chats',
                                              ]
 
 [Account riffm-name]
@@ -69,6 +70,7 @@ nametrans = lambda folder: {'[Gmail]/Drafts':    'drafts',
 folderfilter = lambda folder: folder not in ['[Gmail]/Trash',
                                              '[Gmail]/Important',
                                              '[Gmail]/Spam',
+                                             '[Gmail]/Chats',
                                              ]
 
 [Account riffm2005]
@@ -102,5 +104,6 @@ nametrans = lambda folder: {'[Gmail]/Drafts':    'drafts',
 folderfilter = lambda folder: folder not in ['[Gmail]/Trash',
                                              '[Gmail]/Important',
                                              '[Gmail]/Spam',
+                                             '[Gmail]/Chats',
                                              ]
 #vim: ft=cfg tw=0
