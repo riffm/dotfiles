@@ -19,7 +19,6 @@ set beep_new
 set pipe_decode
 set thorough_search
 
-
 set status_chars  = " *%A"
 set status_format = "───[ Folder: %f ]───[%r%m messages%?n? (%n new)?%?d? (%d to delete)?%?t? (%t tagged)? ]───%>─%?p?( %p postponed )?───"
 
@@ -36,6 +35,7 @@ set uncollapse_jump
 set sort_re
 set reply_regexp = "^(([Rr][Ee]?(\[[0-9]+\])?: *)?(\[[^]]+\] *)?)*"
 
+# vim like movement in index
 bind index gg first-entry
 bind index G last-entry
 bind index R group-reply
@@ -44,16 +44,19 @@ bind index <space> collapse-thread
 bind index p recall-message
 bind index J next-unread
 
+# calls to offlineimap
 macro index O "<shell-escape>offlineimap<enter>" "run offlineimap to sync all mail"
 macro index o "<shell-escape>offlineimap -qf INBOX<enter>" "run offlineimap to sync inbox"
+
 macro index C "<copy-message>?<toggle-mailboxes>" "copy a message to a mailbox"
 macro index M "<save-message>?<toggle-mailboxes>" "move a message to a mailbox"
 
+# contacts suggestions
 set query_command = "contacts -Sf '%eTOKEN%n' '%s' | sed -e 's/TOKEN/\t/g'"
 bind editor \Cn complete-query
 bind editor ^T complete
 
-# pager
+# pager options
 set pager_index_lines = 10
 set pager_context = 3
 set pager_stop
@@ -71,6 +74,7 @@ bind attach <return> view-mailcap
 macro pager \Cu "|urlview<enter>" "call urlview to open links"
 bind compose p postpone-message
 
+# sending email
 set realname = "Tim Perevezentsev"
 set envelope_from
 set sig_dashes
