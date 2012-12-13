@@ -1,4 +1,5 @@
 set from = "me@riffm.name"
+my_hdr Reply-To: $from
 set sendmail = "msmtp -a riffm-name"
 set spoolfile = "+me-at-riffm.name/INBOX"
 set mbox = "+me-at-riffm.name/archive"
