@@ -1,0 +1,106 @@
+[general]
+# NOTE: cronjob calls the quiet UI with -u
+ui = TTYUI
+accounts = stmdev, riffm-name, riffm2005
+pythonfile = ~/.mutt/offlineimap.py
+fsync = false
+
+[Account stmdev]
+localrepository = stmdev-local
+remoterepository = stmdev-remote
+status_backend = sqlite
+postsynchook = notmuch new
+
+[Repository stmdev-local]
+type = Maildir
+localfolders = ~/Mail/riffm-at-stmdev.ru
+nametrans = lambda folder: {'drafts':  '[Gmail]/Drafts',
+                            'sent':    '[Gmail]/Sent Mail',
+                            'flagged': '[Gmail]/Starred',
+                            'trash':   '[Gmail]/Trash',
+                            'archive': '[Gmail]/All Mail',
+                            }.get(folder, folder)
+
+[Repository stmdev-remote]
+type = Gmail
+remoteuser = riffm@stmdev.ru
+remotepasseval = get_keychain_pass(account="riffm@stmdev.ru", server="imap.gmail.com")
+realdelete = no
+maxconnections = 1
+nametrans = lambda folder: {'[Gmail]/Drafts':    'drafts',
+                            '[Gmail]/Sent Mail': 'sent',
+                            '[Gmail]/Starred':   'flagged',
+                            '[Gmail]/Trash':     'trash',
+                            '[Gmail]/All Mail':  'archive',
+                            }.get(folder, folder)
+folderfilter = lambda folder: folder not in ['[Gmail]/Trash',
+                                             '[Gmail]/Important',
+                                             '[Gmail]/Spam',
+                                             ]
+
+[Account riffm-name]
+localrepository = riffm-name-local
+remoterepository = riffm-name-remote
+status_backend = sqlite
+postsynchook = notmuch new
+
+[Repository riffm-name-local]
+type = Maildir
+localfolders = ~/Mail/me-at-riffm.name
+nametrans = lambda folder: {'drafts':  '[Gmail]/Drafts',
+                            'sent':    '[Gmail]/Sent Mail',
+                            'flagged': '[Gmail]/Starred',
+                            'trash':   '[Gmail]/Trash',
+                            'archive': '[Gmail]/All Mail',
+                            }.get(folder, folder)
+
+[Repository riffm-name-remote]
+type = Gmail
+remoteuser = me@riffm.name
+remotepasseval = get_keychain_pass(account="me@riffm.name", server="imap.gmail.com")
+realdelete = no
+maxconnections = 1
+nametrans = lambda folder: {'[Gmail]/Drafts':    'drafts',
+                            '[Gmail]/Sent Mail': 'sent',
+                            '[Gmail]/Starred':   'flagged',
+                            '[Gmail]/Trash':     'trash',
+                            '[Gmail]/All Mail':  'archive',
+                            }.get(folder, folder)
+folderfilter = lambda folder: folder not in ['[Gmail]/Trash',
+                                             '[Gmail]/Important',
+                                             '[Gmail]/Spam',
+                                             ]
+
+[Account riffm2005]
+localrepository = riffm2005-local
+remoterepository = riffm2005-remote
+status_backend = sqlite
+postsynchook = notmuch new
+
+[Repository riffm2005-local]
+type = Maildir
+localfolders = ~/Mail/riffm2005-at-gmail.com
+nametrans = lambda folder: {'drafts':  '[Gmail]/Drafts',
+                            'sent':    '[Gmail]/Sent Mail',
+                            'flagged': '[Gmail]/Starred',
+                            'trash':   '[Gmail]/Trash',
+                            'archive': '[Gmail]/All Mail',
+                            }.get(folder, folder)
+
+[Repository riffm2005-remote]
+type = Gmail
+remoteuser = riffm2005@gmail.com
+remotepasseval = get_keychain_pass(account="riffm2005@gmail.com", server="imap.gmail.com")
+realdelete = no
+maxconnections = 1
+nametrans = lambda folder: {'[Gmail]/Drafts':    'drafts',
+                            '[Gmail]/Sent Mail': 'sent',
+                            '[Gmail]/Starred':   'flagged',
+                            '[Gmail]/Trash':     'trash',
+                            '[Gmail]/All Mail':  'archive',
+                            }.get(folder, folder)
+folderfilter = lambda folder: folder not in ['[Gmail]/Trash',
+                                             '[Gmail]/Important',
+                                             '[Gmail]/Spam',
+                                             ]
+#vim: ft=cfg tw=0
