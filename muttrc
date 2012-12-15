@@ -1,4 +1,5 @@
 set folder = ~/Mail
+set folder_format = "%2C %t %N %D %8s  %f"
 set alias_file = ~/.mutt/alias
 set header_cache = ~/.mutt/cache/headers
 #set message_cachedir = ~/.mutt/cache/bodies  # where to store bodies
@@ -112,6 +113,7 @@ mailboxes +me-at-riffm.name/INBOX \
           +me-at-riffm.name/drafts \
           +me-at-riffm.name/sent
 mailboxes +riffm2005-at-gmail.com/INBOX \
+          +riffm2005-at-gmail.com/archive \
           +riffm2005-at-gmail.com/drafts \
           +riffm2005-at-gmail.com/sent
 
