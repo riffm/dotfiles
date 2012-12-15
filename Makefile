@@ -24,7 +24,7 @@ install-tmux:
 	ln -s `pwd`/tmux.conf ~/.tmux.conf
 
 install-mutt:
-	rm -f ~/.mutt
+	rm -rf ~/.mutt
 	ln -s `pwd`/mutt ~/.mutt
 	rm -f ~/.urlview
 	ln -s `pwd`/urlview ~/.urlview
