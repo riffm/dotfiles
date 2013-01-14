@@ -106,14 +106,6 @@ folder-hook riffm2005-at-gmail.com source ~/.mutt/riffm2005-at-gmail.com
 # default account
 source ~/.mutt/riffm2005-at-gmail.com
 
-mailboxes +riffm-at-stmdev.ru/INBOX \
-          +riffm-at-stmdev.ru/archive \
-          +riffm-at-stmdev.ru/drafts
-mailboxes +me-at-riffm.name/INBOX \
-          +me-at-riffm.name/archive \
-          +me-at-riffm.name/drafts
-mailboxes +riffm2005-at-gmail.com/INBOX \
-          +riffm2005-at-gmail.com/archive \
-          +riffm2005-at-gmail.com/drafts
+mailboxes `find ~/Mail -type d \( ! -regex '.*/\..*' \) | grep -v 'cur\|new\|tmp' | sed -E "s/.*\/Mail\//+/g" | sed -e ':a' -e 'N' -e '$!ba' -e 's/\n/ /g'`
 
 source ~/.mutt/badwolf.muttrc
