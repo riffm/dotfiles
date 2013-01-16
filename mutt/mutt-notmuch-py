@@ -55,43 +55,15 @@ def main(dest_box):
     command('mkdir -p %s/new' % dest_box)
 
     empty_dir(dest_box)
-
-    files = command('notmuch search --output=files %s' % query).split('\n')
-    files = filter(None, files)
-
-    data = {}
-    messages = []
-
+    files = command('notmuch search --output=files "%s"' % query).split('\n')
     for f in files:
-        sha = digest(f)
-        if sha not in data.keys():
-            data[sha] = [f]
-        else:
-            data[sha].append(f)
-
-    for sha in data.keys():
-        if is_gmail and len(data[sha]) > 1:
-            messages.append(pick_all_mail(data[sha]))
-        else:
-            messages.append(data[sha][0])
-
-    for m in messages:
-        command('ln -s "%s" %s/cur/' % (m, dest_box))
+        if f:
+            command('ln -s "%s" %s/cur/' % (f, dest_box))
 
 
 if __name__ == '__main__':
-    global is_gmail
-
     p = OptionParser("usage: %prog [OPTIONS] [RESULTDIR]")
-    p.add_option('-g', '--gmail', dest='gmail',
-                 action='store_true', default=True,
-                 help='gmail-specific behavior')
-    p.add_option('-G', '--not-gmail', dest='gmail',
-                 action='store_false',
-                 help='gmail-specific behavior')
     (options, args) = p.parse_args()
-
-    is_gmail = options.gmail
 
     if args:
         dest = args[0]
