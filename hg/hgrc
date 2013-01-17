@@ -1,5 +1,6 @@
 [ui]
 username=Tim Perevezentsev <riffm2005@gmail.com>
+logtemplate='({node|short}|{phase})[{branch}] {desc} [{author|user}]\n'
 
 [extensions]
 mq =
