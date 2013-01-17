@@ -9,8 +9,12 @@ graphlog =
 color =
 record =
 bookmarks =
+rebase =
 ;hggit = ~/dotfiles/hg/hg-git/hggit
 
 [pager]
 pager = less -R
 attend = annotate, cat, diff, export, glog, log, qdiff
+
+[mq]
+secret=true
