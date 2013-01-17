@@ -13,8 +13,10 @@ image/gif; ~/.mutt/view_attachment.sh %s gif
 # PDFs
 application/pdf; ~/.mutt/view_attachment.sh %s pdf
 
-# HTML
+# HTML & XML
 text/html; ~/.mutt/view_attachment.sh %s html
+application/xml; vim -R -
+application/json; vim -R -
 
 # Unidentified files
 application/octet-stream; ~/.mutt/view_attachment.sh %s "-"
