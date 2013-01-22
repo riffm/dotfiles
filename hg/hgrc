@@ -1,6 +1,6 @@
 [ui]
 username=Tim Perevezentsev <riffm2005@gmail.com>
-logtemplate='({node|short}|{phase})[{branch}] {desc} [{author|user}]\n'
+logtemplate = '(\033[01;30m{node|short}\033[m|{phase}) on \033[01;30m{branch}:{bookmarks}\033[m by \033[01;30m{author|user}\033[m\n(tags: {tags})\n{desc|fill68}\n\n'
 
 [extensions]
 mq =
