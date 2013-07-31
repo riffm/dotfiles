@@ -1,0 +1,5 @@
+ls
+ls auto-save-list/
+ls elpa/
+ls elpa/quack-0.42/
+cat config.el

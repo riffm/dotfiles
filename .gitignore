@@ -2,6 +2,8 @@
 *.pyc
 *.pyo
 *.sw[pn]
+*~
+*.elc
 vim/.netrwhist
 vim/bundle
 mutt/cache/headers

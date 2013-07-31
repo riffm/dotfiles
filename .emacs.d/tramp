@@ -1,0 +1,37 @@
+;; -*- emacs-lisp -*- <13/06/04 23:50:25 /Users/riffm/.emacs.d/tramp>
+;; Tramp connection history.  Don't change this file.
+;; You can delete it, forcing Tramp to reapply the checks.
+
+((["ssh" nil "kpython" nil nil]
+  ("uname" "Linux 2.6.18-92.el5")
+  ("test" "test")
+  ("remote-path"
+   ("/bin" "/usr/bin" "/sbin" "/usr/sbin" "/usr/local/bin" "/usr/local/sbin"))
+  ("remote-shell" "/bin/sh")
+  ("busybox" nil)
+  ("perl-file-spec" t)
+  ("perl-cwd-realpath" t)
+  ("perl" "\\perl")
+  ("~" "/usr/www"))
+ (["ssh" nil "imac" nil nil]
+  ("uname" "Darwin 12.3.0")
+  ("test" "test")
+  ("remote-path"
+   ("/usr/bin" "/bin" "/usr/sbin" "/sbin" "/opt/local/bin"))
+  ("remote-shell" "/bin/sh")
+  ("busybox" nil)
+  ("~" "/Users/riffm")
+  ("stat" nil)
+  ("perl-file-spec" t)
+  ("perl-cwd-realpath" t)
+  ("perl" "\\perl5")
+  ("id" "/usr/bin/id")
+  ("gid-string" "staff")
+  ("readlink" nil)
+  ("gid-integer" 20))
+ (["ssh" "dpc" "192.168.56.101" nil nil]
+  nil)
+ (["ssh" nil "ssh" nil nil]
+  nil)
+ (["ssh" nil "dpc-devel" nil nil]
+  nil))

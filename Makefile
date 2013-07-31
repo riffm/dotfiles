@@ -1,4 +1,4 @@
-install: install-vim install-bash install-git install-hg install-tmux install-mutt
+install: install-vim install-bash install-git install-hg install-tmux install-mutt install-emacs
 
 install-vim:
 	rm -rf ~/.vim ~/.vimrc ~/.ctags
@@ -36,3 +36,7 @@ install-mutt:
 	ln -s `pwd`/muttrc ~/.muttrc
 	rm -f ~/.offlineimaprc
 	ln -s `pwd`/offlineimaprc ~/.offlineimaprc
+
+install-emacs:
+	rm -rf ~/.emacs.d
+	ln -s `pwd`/.emacs.d ~/.emacs.d
