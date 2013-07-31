@@ -8,3 +8,4 @@ vim/.netrwhist
 vim/bundle
 mutt/cache/headers
 mutt/temp
+.emacs.d/eshell/history
