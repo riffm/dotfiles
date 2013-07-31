@@ -8,13 +8,21 @@
 (add-to-list 'package-archives
              '("marmalade" . "http://marmalade-repo.org/packages/"))
 
-(add-to-list 'load-path "/opt/local/share/emacs/site-lisp/slime")
-(setq slime-lisp-implementations
-     `((sbcl ("/opt/local/bin/sbcl"))
-       (ccl ("/opt/local/bin/ccl64"))
-       (clisp ("/opt/local/bin/clisp"))))
-(require 'slime)
-(slime-setup  '(slime-repl slime-asdf slime-fancy slime-banner))
+;; get rid of this OS specific path
+(defvar slime-root-path "/opt/local/share/emacs/site-lisp/slime")
+
+(if (file-exists-p slime-root-path)
+    (progn
+      (add-to-list 'load-path slime-root-path)
+      (setq slime-lisp-implementations
+            `((sbcl ("/opt/local/bin/sbcl"))
+              (ccl ("/opt/local/bin/ccl64"))
+              (clisp ("/opt/local/bin/clisp"))))
+      (require 'slime)
+      (slime-setup  '(slime-repl
+                      slime-asdf
+                      slime-fancy
+                      slime-banner))))
 
 (setq auto-save-list-file-prefix
       (concat temporary-file-directory "save-"))
