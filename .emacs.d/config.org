@@ -82,23 +82,6 @@
                    (package-install package))))
          emacs-pkgs)
   #+end_src
-** Slime setup
-   Slime installation is OS specific and at the moment it is Mac OS X setup
-   #+begin_src emacs-lisp
-     ;; get rid of this OS specific path
-     (defvar slime-root-path "/opt/local/share/emacs/site-lisp/slime")
-     
-     (if (file-exists-p slime-root-path)
-         (progn
-           (add-to-list 'load-path slime-root-path)
-           (setq slime-lisp-implementations
-                 `((sbcl ("/opt/local/bin/sbcl"))
-                   (ccl ("/opt/local/bin/ccl64"))
-                   (clisp ("/opt/local/bin/clisp"))))
-           (require 'slime)
-           (slime-setup)))
-   #+end_src
-
 ** Haskell
    Setting initials for `haskell-mode`
    #+begin_src emacs-lisp

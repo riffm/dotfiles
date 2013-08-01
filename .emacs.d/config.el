@@ -57,18 +57,5 @@
            (package-install package))))
  emacs-pkgs)
 
-;; get rid of this OS specific path
-(defvar slime-root-path "/opt/local/share/emacs/site-lisp/slime")
-
-(if (file-exists-p slime-root-path)
-    (progn
-      (add-to-list 'load-path slime-root-path)
-      (setq slime-lisp-implementations
-            `((sbcl ("/opt/local/bin/sbcl"))
-              (ccl ("/opt/local/bin/ccl64"))
-              (clisp ("/opt/local/bin/clisp"))))
-      (require 'slime)
-      (slime-setup)))
-
 (add-hook 'haskell-mode-hook 'turn-on-haskell-doc-mode)
 (add-hook 'haskell-mode-hook 'turn-on-haskell-indentation)
