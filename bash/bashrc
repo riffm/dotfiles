@@ -17,3 +17,6 @@ do
         export PATH="$directory:$PATH"
     fi
 done
+
+export ALTERNATE_EDITOR=""
+alias em="emacsclient -t"
