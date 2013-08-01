@@ -5,15 +5,7 @@ if [ -f /opt/local/etc/bash_completion ]; then
     . /opt/local/etc/bash_completion
 fi
 
-# Golang
-export GOROOT=$HOME/go
-export GOOS=darwin
-export GOARCH=amd64
-export GOPATH="$HOME/proj/go"
-
-
-for directory in $HOME/go/bin \
-                 $HOME/Library/Haskell/bin \
+for directory in /Library/Haskell/bin \
                  /opt/local/bin \
                  /opt/local/sbin \
                  $HOME/Library/Python/2.7/bin \
