@@ -15,25 +15,6 @@
     (add-to-list 'package-archives
                  '("marmalade" . "http://marmalade-repo.org/packages/"))
   #+end_src
-* Slime setup
-  Slime installation is OS specific and at the moment it is Mac OS X setup
-  #+begin_src emacs-lisp
-    ;; get rid of this OS specific path
-    (defvar slime-root-path "/opt/local/share/emacs/site-lisp/slime")
-    
-    (if (file-exists-p slime-root-path)
-        (progn
-          (add-to-list 'load-path slime-root-path)
-          (setq slime-lisp-implementations
-                `((sbcl ("/opt/local/bin/sbcl"))
-                  (ccl ("/opt/local/bin/ccl64"))
-                  (clisp ("/opt/local/bin/clisp"))))
-          (require 'slime)
-          (slime-setup  '(slime-repl
-                          slime-asdf
-                          slime-fancy
-                          slime-banner))))
-  #+end_src
   
 * Backup files setup
   Set temp dir outside of `~/.emacs.d`.
@@ -81,29 +62,46 @@
   #+begin_src emacs-lisp
     (setq tramp-default-method "ssh")
   #+end_src
-
-* Haskell
-  Setting initials for `haskell-mode`
-  #+begin_src emacs-lisp
-    (add-hook 'haskell-mode-hook 'turn-on-haskell-doc-mode)
-    (add-hook 'haskell-mode-hook 'turn-on-haskell-indentation)
-  #+end_src
 * Custom packages
   Keep list of packages that needs to be installed
   and updated
   #+begin_src emacs-lisp
-    (package-initialize)
-    
-    (defvar emacs-pkgs
-      '(sml-mode
-        scala-mode
-        haskell-mode
-        company))
-    
-    (mapc
-     (lambda (package)
-       (or (package-installed-p package)
-           (if (y-or-n-p (format "Package %s is missing. Install it? " package))
-               (package-install package))))
-     emacs-pkgs)
+        (package-initialize)
+        
+        (defvar emacs-pkgs
+          '(ahg
+            sml-mode
+            scala-mode
+            haskell-mode
+            company))
+        
+        (mapc
+         (lambda (package)
+           (or (package-installed-p package)
+               (if (y-or-n-p (format "Package %s is missing. Install it? " package))
+                   (package-install package))))
+         emacs-pkgs)
   #+end_src
+** Slime setup
+   Slime installation is OS specific and at the moment it is Mac OS X setup
+   #+begin_src emacs-lisp
+     ;; get rid of this OS specific path
+     (defvar slime-root-path "/opt/local/share/emacs/site-lisp/slime")
+     
+     (if (file-exists-p slime-root-path)
+         (progn
+           (add-to-list 'load-path slime-root-path)
+           (setq slime-lisp-implementations
+                 `((sbcl ("/opt/local/bin/sbcl"))
+                   (ccl ("/opt/local/bin/ccl64"))
+                   (clisp ("/opt/local/bin/clisp"))))
+           (require 'slime)
+           (slime-setup)))
+   #+end_src
+
+** Haskell
+   Setting initials for `haskell-mode`
+   #+begin_src emacs-lisp
+     (add-hook 'haskell-mode-hook 'turn-on-haskell-doc-mode)
+     (add-hook 'haskell-mode-hook 'turn-on-haskell-indentation)
+   #+end_src
