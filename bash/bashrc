@@ -20,3 +20,7 @@ done
 
 export ALTERNATE_EDITOR=""
 alias em="emacsclient -t"
+
+if [ -f $HOME/.profile_local ]; then
+   . $HOME/.profile_local
+fi
