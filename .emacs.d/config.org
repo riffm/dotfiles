@@ -75,6 +75,22 @@
   #+begin_src emacs-lisp
     (setq tramp-default-method "ssh")
   #+end_src
+* Python
+  Using `pyflakes` for syntax cheching.
+  #+begin_src emacs-lisp
+    (defun flymake-pyflakes-init ()
+      (let* ((temp-file (flymake-init-create-temp-buffer-copy
+                         'flymake-create-temp-inplace))
+             (local-file (file-relative-name
+                          temp-file
+                          (file-name-directory buffer-file-name))))
+        (list "pyflakes" (list local-file))))
+    
+    (eval-after-load "flymake"
+      '(add-to-list 'flymake-allowed-file-name-masks
+                    '("\\.py\\'" flymake-pyflakes-init)))
+    
+  #+end_src
 * Custom packages
   Keep list of packages that needs to be installed
   and updated
