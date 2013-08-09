@@ -28,6 +28,13 @@
       (message "%s" file)
       (delete-file file))))
 
+(add-hook 'find-file-hook 'flymake-find-file-hook)
+
+(eval-after-load "flymake"
+  '(progn
+     (local-set-key "\M-n" 'flymake-goto-next-error)
+     (local-set-key "\M-p" 'flymake-goto-prev-error)))
+
 (setq-default indent-tabs-mode nil)
 (setq-default indicate-empty-lines t)
 (setq show-trailing-whitespace t)

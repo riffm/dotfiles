@@ -41,6 +41,16 @@
           (delete-file file))))
   #+end_src
 
+* Flymake
+  Here is only initialization of the mode. Specific tuning is placed inside languages configs
+  #+begin_src emacs-lisp
+    (add-hook 'find-file-hook 'flymake-find-file-hook)
+    
+    (eval-after-load "flymake"
+      '(progn
+         (local-set-key "\M-n" 'flymake-goto-next-error)
+         (local-set-key "\M-p" 'flymake-goto-prev-error)))
+  #+end_src
 * Whitespaces and tabs
   Show all trailing whitespaces. Show tabs.
   Use spaces over tabs. Show trailing empty lines.
