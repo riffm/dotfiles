@@ -215,6 +215,7 @@ If this many lines are not available, prefer to display the tooltip above."
   '((company-abbrev . "Abbrev")
     (company-capf . "completion-at-point-functions")
     (company-clang . "Clang")
+    (company-cmake . "CMake")
     (company-css . "CSS")
     (company-dabbrev . "dabbrev for plain text")
     (company-dabbrev-code . "dabbrev for code")
@@ -244,7 +245,7 @@ If this many lines are not available, prefer to display the tooltip above."
 
 (defcustom company-backends '(company-elisp company-nxml company-css
                               company-semantic company-clang company-eclim
-                              company-xcode company-ropemacs
+                              company-xcode company-ropemacs company-cmake
                               (company-gtags company-etags company-dabbrev-code
                                company-keywords)
                               company-oddmuse company-files company-dabbrev)
@@ -523,11 +524,33 @@ keymap during active completions (`company-active-map'):
     (company-cancel)
     (kill-local-variable 'company-point)))
 
+(defcustom company-global-modes t
+  "Modes for which `company-mode' mode is turned on by `global-company-mode'.
+If nil, means no modes.  If t, then all major modes have it turned on.
+If a list, it should be a list of `major-mode' symbol names for which
+`company-mode' should be automatically turned on.  The sense of the list is
+negated if it begins with `not'.  For example:
+ (c-mode c++-mode)
+means that `company-mode' is turned on for buffers in C and C++ modes only.
+ (not message-mode)
+means that `company-mode' is always turned on except in `message-mode' buffers."
+  :type '(choice (const :tag "none" nil)
+                 (const :tag "all" t)
+                 (set :menu-tag "mode specific" :tag "modes"
+                      :value (not)
+                      (const :tag "Except" not)
+                      (repeat :inline t (symbol :tag "mode")))))
+
 ;;;###autoload
 (define-globalized-minor-mode global-company-mode company-mode company-mode-on)
 
 (defun company-mode-on ()
-  (unless (or noninteractive (eq (aref (buffer-name) 0) ?\s))
+  (when (and (not (or noninteractive (eq (aref (buffer-name) 0) ?\s)))
+             (cond ((eq company-global-modes t)
+                    t)
+                   ((eq (car-safe company-global-modes) 'not)
+                    (not (memq major-mode (cdr company-global-modes))))
+                   (t (memq major-mode company-global-modes))))
     (company-mode 1)))
 
 (defsubst company-assert-enabled ()
@@ -1817,7 +1840,7 @@ Returns a negative number if the tooltip should be displayed above point."
         (overlay-put ov 'company-replacement-args args)
 
         (let ((lines (company--create-lines selection (abs height))))
-          (overlay-put ov 'company-before
+          (overlay-put ov 'company-after
                        (apply 'company--replacement-string lines args))
           (overlay-put ov 'company-width (string-width (car lines))))
 
@@ -1831,7 +1854,7 @@ Returns a negative number if the tooltip should be displayed above point."
 
 (defun company-pseudo-tooltip-edit (selection)
   (let ((height (overlay-get company-pseudo-tooltip-overlay 'company-height)))
-    (overlay-put company-pseudo-tooltip-overlay 'company-before
+    (overlay-put company-pseudo-tooltip-overlay 'company-after
                  (apply 'company--replacement-string
                         (company--create-lines selection (abs height))
                         (overlay-get company-pseudo-tooltip-overlay
@@ -1846,7 +1869,7 @@ Returns a negative number if the tooltip should be displayed above point."
   (when (overlayp company-pseudo-tooltip-overlay)
     (overlay-put company-pseudo-tooltip-overlay 'invisible nil)
     (overlay-put company-pseudo-tooltip-overlay 'line-prefix nil)
-    (overlay-put company-pseudo-tooltip-overlay 'before-string nil)))
+    (overlay-put company-pseudo-tooltip-overlay 'after-string nil)))
 
 (defun company-pseudo-tooltip-unhide ()
   (when company-pseudo-tooltip-overlay
@@ -1855,8 +1878,8 @@ Returns a negative number if the tooltip should be displayed above point."
     (overlay-put company-pseudo-tooltip-overlay 'priority 1)
     ;; No (extra) prefix for the first line.
     (overlay-put company-pseudo-tooltip-overlay 'line-prefix "")
-    (overlay-put company-pseudo-tooltip-overlay 'before-string
-                 (overlay-get company-pseudo-tooltip-overlay 'company-before))
+    (overlay-put company-pseudo-tooltip-overlay 'after-string
+                 (overlay-get company-pseudo-tooltip-overlay 'company-after))
     (overlay-put company-pseudo-tooltip-overlay 'window (selected-window))))
 
 (defun company-pseudo-tooltip-guard ()
