@@ -5,7 +5,7 @@ if [ -f /opt/local/etc/bash_completion ]; then
     . /opt/local/etc/bash_completion
 fi
 
-for directory in /Library/Haskell/bin \
+for directory in $HOME/Library/Haskell/bin \
                  /opt/local/bin \
                  /opt/local/sbin \
                  $HOME/Library/Python/2.7/bin \
