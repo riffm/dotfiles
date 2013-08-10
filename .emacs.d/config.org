@@ -1,4 +1,10 @@
 #+STARTUP: hideblocks
+* Coding system
+  Setting utf-8 as default codec.
+  Call to [[help:set-default-coding-systems][set-default-coding-systems]] assings value to common coding variables.
+  #+begin_src emacs-lisp
+    (set-default-coding-systems 'utf-8)
+  #+end_src
 * Hide tool bar
   #+begin_src emacs-lisp
     (if window-system

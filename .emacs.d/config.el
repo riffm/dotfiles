@@ -1,4 +1,6 @@
 
+(set-default-coding-systems 'utf-8)
+
 (if window-system
     (tool-bar-mode -1))
 
