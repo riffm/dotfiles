@@ -37,6 +37,9 @@
      (local-set-key "\M-n" 'flymake-goto-next-error)
      (local-set-key "\M-p" 'flymake-goto-prev-error)))
 
+(setf flymake-no-changes-timeout 20
+      flymake-start-syntax-check-on-newline nil)
+
 (setq-default indent-tabs-mode nil)
 (setq-default indicate-empty-lines t)
 (setq show-trailing-whitespace t)

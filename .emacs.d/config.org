@@ -57,6 +57,13 @@
          (local-set-key "\M-n" 'flymake-goto-next-error)
          (local-set-key "\M-p" 'flymake-goto-prev-error)))
   #+end_src
+
+  To remove annoying errors while typing code we do not check on a new line
+  and increasing default check timeout:
+  #+begin_src emacs-lisp
+    (setf flymake-no-changes-timeout 20
+          flymake-start-syntax-check-on-newline nil)
+  #+end_src
 * Whitespaces and tabs
   Show all trailing whitespaces. Show tabs.
   Use spaces over tabs. Show trailing empty lines.
