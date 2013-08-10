@@ -799,7 +799,7 @@
 	    [(20130620 1413)
 	     nil "Rip Clojure namespaces apart and rebuild them. [github]" single])
  (skewer-mode .
-	      [(20130605 1217)
+	      [(20130809 1518)
 	       ((simple-httpd
 		 (1 4 0))
 		(js2-mode
@@ -980,7 +980,7 @@
 		    (1 0)))
 		  "Minor mode for Behaviour and Test Driven [github]" single])
  (ruby-refactor .
-		[(20130803 955)
+		[(20130808 2227)
 		 ((ruby-mode
 		   (1 2)))
 		 "A minor mode which presents various Ruby refactoring helpers. [github]" single])
@@ -1013,7 +1013,7 @@
 	     (1 0 0)))
 	   "An Emacs interface for RuboCop [github]" single])
  (rspec-mode .
-	     [(20130628 2224)
+	     [(20130810 1844)
 	      ((ruby-mode
 		(1 0)))
 	      "Enhance ruby-mode for RSpec [github]" single])
@@ -1176,7 +1176,7 @@
 		(1 5 0)))
 	      "Manage and navigate projects in Emacs easily [github]" single])
  (project-persist .
-		  [(20130422 1607)
+		  [(20130810 1359)
 		   nil "A minor mode to allow loading and saving of project settings. [github]" tar])
  (project-local-variables .
 			  [(20080502 1652)
@@ -1187,7 +1187,7 @@
 			 (0 8 0)))
 		       "Snippets for processing-mode [github]" tar])
  (processing-mode .
-		  [(20130804 1120)
+		  [(20130810 1609)
 		   nil "Major mode for Processing 2.0 [github]" single])
  (proc-net .
 	   [(20130322 12)
@@ -1268,6 +1268,13 @@
  (php-boris .
 	    [(20130527 1021)
 	     nil "Run boris php REPL [github]" single])
+ (php-auto-yasnippets .
+		      [(20130807 1647)
+		       ((php-mode
+			 (1 11))
+			(yasnippet
+			 (0 8 0)))
+		       "Creates snippets for PHP functions [github]" tar])
  (php+-mode .
 	    [(20121129 1452)
 	     nil "A better PHP mode with Zend Framework 1 support. [github]" tar])
@@ -1509,7 +1516,7 @@
 	      [(20121212 1658)
 	       nil "Outlook org [github]" tar])
  (org-octopress .
-		[(20130527 2347)
+		[(20130810 954)
 		 ((org
 		   (8 0))
 		  (orglue
@@ -1761,7 +1768,7 @@
 	       (1 1)))
 	     "Mote minor mode [github]" single])
  (monokai-theme .
-		[(20130806 1840)
+		[(20130810 1645)
 		 nil "A fruity color theme for Emacs. [git]" single])
  (monky .
 	[(20130513 1413)
@@ -1834,7 +1841,7 @@
 	    [(20120716 1647)
 	     nil "advanced highlighting of matching parentheses [wiki]" single])
  (mew .
-      [(20130713 1928)
+      [(20130810 1523)
        nil "Messaging in the Emacs World [github]" tar])
  (metaweblog .
 	     [(20130707 1701)
@@ -1941,7 +1948,7 @@
 			       [(20130730 1032)
 				nil "Advice for magit-log-edit-commit [github]" single])
  (magit .
-	[(20130809 1226)
+	[(20130810 1119)
 	 nil "control Git from Emacs [github]" tar])
  (mag-menu .
 	   [(20130224 56)
@@ -2034,7 +2041,7 @@
 	     [(20121205 1456)
 	      nil "List-manipulation utility functions [github]" single])
  (lispyscript-mode .
-		   [(20130527 1613)
+		   [(20130809 2119)
 		    nil "Major mode for LispyScript code. [github]" single])
  (lispxmp .
 	  [(20100506 129)
@@ -2484,7 +2491,7 @@
 	 [(20130723 2323)
 	  nil "Functions to manipulate colors, including RGB hex strings. [wiki]" single])
  (heroku-theme .
-	       [(20130805 1638)
+	       [(20130810 43)
 		nil "Heroku color theme [github]" single])
  (heroku .
 	 [(20120629 1113)
@@ -2634,7 +2641,7 @@
 	    (20120509)))
 	  "helm-sources and some utilities for GNU R. [github]" single])
  (helm .
-       [(20130809 1342)
+       [(20130810 1303)
 	nil "Helm is an Emacs incremental and narrowing framework [github]" tar])
  (header2 .
 	  [(20130723 2321)
@@ -2692,7 +2699,7 @@
 	      [(20130506 1025)
 	       nil "Groovy mode derived mode [github]" tar])
  (grizzl .
-	 [(20130713 1943)
+	 [(20130810 1902)
 	  ((cl-lib
 	    (0 1)))
 	  "Fuzzy Search Library & Completing Read [github]" tar])
@@ -2709,7 +2716,7 @@
 		    [(20120821 1835)
 		     nil "Mode for the dot-language used by graphviz (att). [github]" single])
  (graphene .
-	   [(20130621 911)
+	   [(20130810 1356)
 	    ((auto-complete
 	      (20130330))
 	     (smartparens
@@ -2769,7 +2776,7 @@
 	  [(20120914 2148)
 	   nil "Paste to play.golang.org [github]" single])
  (go-mode .
-	  [(20130809 856)
+	  [(20130809 1442)
 	   nil "Major mode for the Go programming language [hg]" tar])
  (go-errcheck .
 	      [(20130308 1757)
@@ -3088,7 +3095,7 @@
 		  [(20130327 2132)
 		   nil "A flymake handler for javascript using both jshint and gjslint [github]" single])
  (flymake-elixir .
-		 [(20130420 59)
+		 [(20130810 1017)
 		  nil "A flymake handler for elixir-mode .ex files. [github]" single])
  (flymake-easy .
 	       [(20130610 1705)
@@ -3123,7 +3130,7 @@
 			      (24 1)))
 			    "Change mode line color with Flycheck status [github]" single])
  (flycheck .
-	   [(20130809 1655)
+	   [(20130809 2043)
 	    ((s
 	      (1 6 0))
 	     (dash
@@ -3177,7 +3184,7 @@
 	    [(20130723 2311)
 	     nil "Resize a frame.  In particular, fit a frame to its buffers. [wiki]" single])
  (fiplr .
-	[(20130713 2058)
+	[(20130810 1841)
 	 ((grizzl
 	   (0 1 0))
 	  (cl-lib
@@ -3882,14 +3889,16 @@
 	     [(20130619 1241)
 	      nil "Perl code editing commands for Emacs [github]" single])
  (confluence-edit .
-		  [(20130808 2150)
+		  [(20130809 1927)
 		   nil "Emacs mode for editing confluence content buffers [svn]" single])
  (confluence .
-	     [(20130808 2303)
+	     [(20130809 1949)
 	      ((xml-rpc
 		(1 6 4))
 	       (confluence-edit
-		(1 6 -2)))
+		(1 7 -2))
+	       (confluence-xml-edit
+		(1 7 -2)))
 	      "Emacs mode for interacting with confluence wikis [svn]" single])
  (concurrent .
 	     [(20120306 1807)
@@ -3909,10 +3918,10 @@
 		   (0 6 8)))
 		 "company-mode completion back-end for CMake [github]" tar])
  (company .
-	  [(20130809 1716)
+	  [(20130810 112)
 	   nil "Modular in-buffer completion framework [github]" tar])
  (commander .
-	    [(20130731 1431)
+	    [(20130809 1830)
 	     ((s
 	       (1 6 0))
 	      (dash
@@ -4035,7 +4044,7 @@
 		       [(20100310 1348)
 			nil "cursor stays vertically centered [wiki]" single])
  (cask .
-       [(20130809 1545)
+       [(20130809 2023)
 	nil "Emacs dependency management made easy [github]" tar])
  (capture .
 	  [(20130710 942)
@@ -4111,7 +4120,7 @@
 	   [(20081011 2126)
 	    nil "Quote text with a semi-box. [github]" single])
  (bookmark+ .
-	    [(20130724 1518)
+	    [(20130809 1731)
 	     nil "Bookmark+: extensions to standard library `bookmark.el'. [wiki]" tar])
  (bm .
      [(20121212 2224)
