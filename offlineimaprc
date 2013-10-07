@@ -1,9 +1,11 @@
 [general]
 # NOTE: cronjob calls the quiet UI with -u
 ui = TTYUI
-accounts = stmdev, riffm-name, riffm2005
+# accounts = stmdev, riffm-name, riffm2005
+accounts = riffm-stcnet
 pythonfile = ~/.mutt/offlineimap.py
 fsync = false
+
 
 [Account stmdev]
 localrepository = stmdev-local
@@ -106,4 +108,22 @@ folderfilter = lambda folder: folder not in ['[Gmail]/Trash',
                                              '[Gmail]/Spam',
                                              '[Gmail]/Chats',
                                              ]
+
+
+[Account riffm-stcnet]
+localrepository = riffm-stcnet-local
+remoterepository = riffm-stcnet-remote
+status_backend = sqlite
+postsynchook = notmuch new
+
+[Repository riffm-stcnet-local]
+type = Maildir
+localfolders = ~/Mail/riffm-at-rnd.stcnet.ru
+
+[Repository riffm-stcnet-remote]
+type = IMAP
+remotehost = mail.rnd.stcnet.ru
+remoteuser = riffm@rnd.stcnet.ru
+remotepasseval = get_keychain_pass(account="riffm@rnd.stcnet.ru", server="rnd.stcnet.ru")
+
 #vim: ft=cfg tw=0
