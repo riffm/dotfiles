@@ -89,3 +89,25 @@
 (add-hook 'haskell-mode-hook 'flymake-haskell-multi-load)
 
 (require 'ahg)
+
+(setq message-send-mail-function 'message-send-mail-with-sendmail
+      sendmail-program "msmtp"
+      user-full-name "Tim Perevezentsev")
+
+(defun choose-msmtp-account ()
+  (if (message-mail-p)
+      (save-excursion
+        (let*
+            ((from (save-restriction
+                     (message-narrow-to-headers)
+                     (message-fetch-field "from")))
+             (account
+              (cond
+               ((string-match "riffm2005@gmail.com" from) "riffm2005")
+               ((string-match "riffm@stmdev.ru" from) "stmdev")
+               ((string-match "me@riffm.name" from) "riffm-name")
+               ((string-match "riffm@rnd.stcnet.ru" from) "riffm-stcnet"))))
+          (setq message-sendmail-extra-arguments (list '"-a" account))))))
+
+(setq message-sendmail-envelope-from 'header)
+(add-hook 'message-send-mail-hook 'choose-msmtp-account)
