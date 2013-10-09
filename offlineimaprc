@@ -122,8 +122,10 @@ localfolders = ~/Mail/riffm-at-rnd.stcnet.ru
 
 [Repository riffm-stcnet-remote]
 type = IMAP
+ssl = yes
+cert_fingerprint = 6c250dac58d73bcb8699b8d61256a1b3ad03f4fe
 remotehost = mail.rnd.stcnet.ru
 remoteuser = riffm@rnd.stcnet.ru
-remotepasseval = get_keychain_pass(account="riffm@rnd.stcnet.ru", server="rnd.stcnet.ru")
+remotepasseval = get_keychain_pass(account="riffm@rnd.stcnet.ru", server="mail.rnd.stcnet.ru")
 
 #vim: ft=cfg tw=0
