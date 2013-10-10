@@ -40,3 +40,5 @@ install-mutt:
 install-emacs:
 	rm -rf ~/.emacs.d
 	ln -s `pwd`/.emacs.d ~/.emacs.d
+	rm -rf ~/.gnus
+	ln -s `pwd`/.gnus ~/.gnus
