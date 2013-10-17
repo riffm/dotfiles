@@ -9,3 +9,4 @@ mutt/cache/headers
 mutt/temp
 .emacs.d/eshell/history
 gnus/.newsrc*
+.emacs.d/url/
