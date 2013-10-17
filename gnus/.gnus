@@ -10,8 +10,10 @@
       '(("STM" "^From:.*rnd\.stcnet\.ru.*")
         ("misc" "")))
 
+(setq mm-text-html-renderer 'gnus-w3m
+      gnus-group-line-format "%M%S%5y/%R:%B%(%g%)\n")
+
 (add-hook 'gnus-group-mode-hook 'gnus-topic-mode)
 (add-hook 'gnus-get-new-news-hook 'offlineimap)
-(setq mm-text-html-renderer 'gnus-w3m)
 
 (autoload 'notmuch "notmuch" "notmuch mail" t)
