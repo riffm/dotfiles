@@ -11,6 +11,7 @@
         ("misc" "")))
 
 (setq-default
+ user-mail-address "riffm2005@gmail.com"
  mm-text-html-renderer 'gnus-w3m
  gnus-group-line-format "%M%S%5y/%R:%B%(%g%)\n"
  gnus-summary-line-format "%U%R%z %(%&user-date;  %-15,15f  %B%s%)\n"
@@ -25,6 +26,9 @@
  gnus-sum-thread-tree-vertical "│")
 
 (add-hook 'gnus-group-mode-hook 'gnus-topic-mode)
-(add-hook 'gnus-get-new-news-hook 'offlineimap)
 
 (autoload 'notmuch "notmuch" "notmuch mail" t)
+
+(setq-default gnus-posting-styles
+              '((".*" (address "riffm2005@gmail.com"))
+                ("stcnet:.*" (address "riffm@rnd.stcnet.ru"))))
