@@ -48,7 +48,7 @@ other_email=me@riffm.name;riffm@stmdev.ru;riffm@rnd.stcnet.ru;
 #
 [new]
 tags=unread;inbox;
-ignore=
+ignore=.nnmaildir
 
 # Search configuration
 #
