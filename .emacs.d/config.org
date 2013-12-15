@@ -136,6 +136,11 @@
    #+begin_src emacs-lisp
      (require 'ahg)
    #+end_src
+** coffeescript
+   Set indentation
+   #+begin_src emacs-lisp
+     (setq coffee-tab-width 2)
+   #+end_src
 * Mail
 ** smtp
   Using `msmtp` as a smtp client program

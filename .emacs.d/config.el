@@ -90,6 +90,8 @@
 
 (require 'ahg)
 
+(setq coffee-tab-width 2)
+
 (setq message-send-mail-function 'message-send-mail-with-sendmail
       sendmail-program "msmtp"
       user-full-name "Tim Perevezentsev")
