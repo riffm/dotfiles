@@ -4,8 +4,6 @@
 (if window-system
     (tool-bar-mode -1))
 
-(load-theme 'wombat)
-
 (require 'package)
 
 (add-to-list 'package-archives
@@ -83,6 +81,10 @@
        (if (y-or-n-p (format "Package %s is missing. Install it? " package))
            (package-install package))))
  emacs-pkgs)
+
+(load-theme 'solarized-light t)
+(setq solarized-distinct-fringe-background t
+      solarized-high-contrast-mode-line t)
 
 (add-hook 'haskell-mode-hook 'turn-on-haskell-doc-mode)
 (add-hook 'haskell-mode-hook 'turn-on-haskell-indentation)
