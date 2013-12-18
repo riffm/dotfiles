@@ -136,6 +136,14 @@
    #+begin_src emacs-lisp
      (require 'ahg)
    #+end_src
+** scala
+*** ensime
+    Start ensime server on scala mode init
+    #+begin_src emacs-lisp
+      (add-to-list 'load-path "~/dotfiles/ensime_2.10.0-0.9.8.9/elisp/")
+      (require 'ensime)
+      (add-hook 'scala-mode-hook 'ensime-scala-mode-hook)
+    #+end_src
 * Mail
 ** smtp
   Using `msmtp` as a smtp client program
