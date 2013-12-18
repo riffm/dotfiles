@@ -4,8 +4,6 @@
 (if window-system
     (tool-bar-mode -1))
 
-(load-theme 'wombat)
-
 (require 'package)
 
 (add-to-list 'package-archives
@@ -84,6 +82,10 @@
            (package-install package))))
  emacs-pkgs)
 
+(load-theme 'solarized-light t)
+(setq solarized-distinct-fringe-background t
+      solarized-high-contrast-mode-line t)
+
 (add-hook 'haskell-mode-hook 'turn-on-haskell-doc-mode)
 (add-hook 'haskell-mode-hook 'turn-on-haskell-indentation)
 (add-hook 'haskell-mode-hook 'flymake-haskell-multi-load)
@@ -93,6 +95,8 @@
 (add-to-list 'load-path "~/dotfiles/ensime_2.10.0-0.9.8.9/elisp/")
 (require 'ensime)
 (add-hook 'scala-mode-hook 'ensime-scala-mode-hook)
+
+(setq coffee-tab-width 2)
 
 (setq message-send-mail-function 'message-send-mail-with-sendmail
       sendmail-program "msmtp"

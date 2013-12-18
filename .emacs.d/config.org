@@ -10,10 +10,7 @@
     (if window-system
         (tool-bar-mode -1))
   #+end_src
-* Color scheme
-  #+begin_src emacs-lisp
-  (load-theme 'wombat)
-  #+end_src
+
 * Additional repos
   Additional package repositories
   #+begin_src emacs-lisp
@@ -124,6 +121,12 @@
                    (package-install package))))
          emacs-pkgs)
   #+end_src
+** Solarized
+  #+begin_src emacs-lisp
+    (load-theme 'solarized-light t)
+    (setq solarized-distinct-fringe-background t
+          solarized-high-contrast-mode-line t)
+  #+end_src
 ** Haskell
    Setting initials for `haskell-mode`
    #+begin_src emacs-lisp
@@ -144,6 +147,11 @@
       (require 'ensime)
       (add-hook 'scala-mode-hook 'ensime-scala-mode-hook)
     #+end_src
+** coffeescript
+   Set indentation
+   #+begin_src emacs-lisp
+     (setq coffee-tab-width 2)
+   #+end_src
 * Mail
 ** smtp
   Using `msmtp` as a smtp client program
