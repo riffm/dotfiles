@@ -10,3 +10,5 @@ mutt/temp
 .emacs.d/eshell/history
 gnus/.newsrc*
 .emacs.d/url/
+.emacs.d/elpa/archives/
+
