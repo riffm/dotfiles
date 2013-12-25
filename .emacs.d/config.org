@@ -101,6 +101,15 @@
                     '("\\.py\\'" flymake-pyflakes-init)))
     
   #+end_src
+* Gnutls
+  Define helper function which adds certs file on mac os.
+  Right now it is curl crt file
+  #+begin_src emacs-lisp
+    (defun add-curl-crt-bundle-to-gnutls-trustfiles ()
+      (let ((f "/opt/local/share/curl/curl-ca-bundle.crt"))
+        (when (and (eq system-type 'darwin) (file-exists-p f))
+            (add-to-list 'gnutls-trustfiles f))))
+  #+end_src
 * Custom packages
   Keep list of packages that needs to be installed
   and updated
@@ -146,6 +155,25 @@
       (require 'ensime)
       (add-hook 'scala-mode-hook 'ensime-scala-mode-hook)
     #+end_src
+** jabber
+   Using multiple accounts
+   #+begin_src emacs-lisp
+     (setq jabber-account-list
+           '(("riffm@rnd.stcnet.ru"
+              (:disabled . t)
+              (:network-server . "rnd.stcnet.ru")
+              (:connection-type . network))
+             ("riffm@jabber.ru/emacs"
+              (:network-server . "allports.jabber.ru")
+              ;(:connection-type . starttls)
+              (:port . 443))))
+     
+     (defun jabber ()
+       (interactive)
+       (require 'gnutls)
+       (add-curl-crt-bundle-to-gnutls-trustfiles)
+       (jabber-connect-all))
+   #+end_src
 ** coffeescript
    Set indentation
    #+begin_src emacs-lisp

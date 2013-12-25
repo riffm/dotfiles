@@ -66,6 +66,11 @@
   '(add-to-list 'flymake-allowed-file-name-masks
                 '("\\.py\\'" flymake-pyflakes-init)))
 
+(defun add-curl-crt-bundle-to-gnutls-trustfiles ()
+  (let ((f "/opt/local/share/curl/curl-ca-bundle.crt"))
+    (when (and (eq system-type 'darwin) (file-exists-p f))
+        (add-to-list 'gnutls-trustfiles f))))
+
 (package-initialize)
 
 (defvar emacs-pkgs
@@ -94,6 +99,22 @@
 
 (require 'ensime)
 (add-hook 'scala-mode-hook 'ensime-scala-mode-hook)
+
+(setq jabber-account-list
+      '(("riffm@rnd.stcnet.ru"
+         (:disabled . t)
+         (:network-server . "rnd.stcnet.ru")
+         (:connection-type . network))
+        ("riffm@jabber.ru/emacs"
+         (:network-server . "allports.jabber.ru")
+         ;(:connection-type . starttls)
+         (:port . 443))))
+
+(defun jabber ()
+  (interactive)
+  (require 'gnutls)
+  (add-curl-crt-bundle-to-gnutls-trustfiles)
+  (jabber-connect-all))
 
 (setq coffee-tab-width 2)
 
