@@ -104,13 +104,12 @@
 
 (setq jabber-account-list
       '(("riffm@rnd.stcnet.ru"
-         (:disabled . t)
          (:network-server . "rnd.stcnet.ru")
          (:connection-type . network))
         ("riffm@jabber.ru/emacs"
-         (:network-server . "allports.jabber.ru")
-         ;(:connection-type . starttls)
-         (:port . 443))))
+         (:network-server . "jabber.ru")
+         (:connection-type . ssl)
+         (:port . 5223))))
 
 (defun jabber ()
   (interactive)
