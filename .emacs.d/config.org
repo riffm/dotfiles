@@ -102,6 +102,11 @@
     
   #+end_src
 * Gnutls
+  Use default security level of the Diffie-Hellman key exchange
+  #+begin_src emacs-lisp
+    (setq gnutls-min-prime-bits nil)
+  #+end_src
+
   Define helper function which adds certs file on mac os.
   Right now it is curl crt file
   #+begin_src emacs-lisp

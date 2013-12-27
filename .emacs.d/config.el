@@ -66,6 +66,8 @@
   '(add-to-list 'flymake-allowed-file-name-masks
                 '("\\.py\\'" flymake-pyflakes-init)))
 
+(setq gnutls-min-prime-bits nil)
+
 (defun add-curl-crt-bundle-to-gnutls-trustfiles ()
   (let ((f "/opt/local/share/curl/curl-ca-bundle.crt"))
     (when (and (eq system-type 'darwin) (file-exists-p f))
