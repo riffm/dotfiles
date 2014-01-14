@@ -5,6 +5,11 @@
   #+begin_src emacs-lisp
     (set-default-coding-systems 'utf-8)
   #+end_src
+* Default theme
+  These one is used in terminals
+  #+begin_src emacs-lisp
+    (load-theme 'tango-dark)
+  #+end_src
 * Hide tool bar
   #+begin_src emacs-lisp
     (if window-system
@@ -137,9 +142,11 @@
   #+end_src
 ** Solarized
   #+begin_src emacs-lisp
-    (load-theme 'solarized-light t)
-    (setq solarized-distinct-fringe-background t
-          solarized-high-contrast-mode-line t)
+    (if (display-graphic-p)
+        (progn
+          (load-theme 'solarized-dark t)
+          (setq solarized-distinct-fringe-background t
+                solarized-high-contrast-mode-line t)))
   #+end_src
 ** Haskell
    Setting initials for `haskell-mode`

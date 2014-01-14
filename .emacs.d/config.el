@@ -1,6 +1,8 @@
 
 (set-default-coding-systems 'utf-8)
 
+(load-theme 'tango-dark)
+
 (if window-system
     (tool-bar-mode -1))
 
@@ -89,9 +91,11 @@
            (package-install package))))
  emacs-pkgs)
 
-(load-theme 'solarized-light t)
-(setq solarized-distinct-fringe-background t
-      solarized-high-contrast-mode-line t)
+(if (display-graphic-p)
+    (progn
+      (load-theme 'solarized-dark t)
+      (setq solarized-distinct-fringe-background t
+            solarized-high-contrast-mode-line t)))
 
 (add-hook 'haskell-mode-hook 'turn-on-haskell-doc-mode)
 (add-hook 'haskell-mode-hook 'turn-on-haskell-indentation)
