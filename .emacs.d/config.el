@@ -127,6 +127,21 @@
 
 (setq coffee-tab-width 2)
 
+(when (file-exists-p (executable-find "opam"))
+  (dolist (var (car (read-from-string
+                     (shell-command-to-string "opam config env --sexp"))))
+    (setenv (car var) (cadr var)))
+  (setq exec-path (split-string (getenv "PATH") path-separator))
+  (push (concat (getenv "OCAML_TOPLEVEL_PATH") "/../../share/emacs/site-lisp")
+        load-path)
+  (autoload 'utop "utop" "Toplevel for OCaml" t)
+  (autoload 'utop-setup-ocaml-buffer "utop" "Toplevel for OCaml" t)
+  (add-hook 'tuareg-mode-hook 'utop-setup-ocaml-buffer)
+  (add-hook 'tuareg-mode-hook
+            #'(lambda ()
+                (define-key tuareg-mode-map
+                  (kbd "C-M-i") 'utop-edit-complete))))
+
 (setq message-send-mail-function 'message-send-mail-with-sendmail
       sendmail-program "msmtp"
       user-full-name "Tim Perevezentsev")
