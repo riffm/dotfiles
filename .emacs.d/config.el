@@ -127,7 +127,7 @@
 
 (setq coffee-tab-width 2)
 
-(when (file-exists-p (executable-find "opam"))
+(when (executable-find "opam")
   (dolist (var (car (read-from-string
                      (shell-command-to-string "opam config env --sexp"))))
     (setenv (car var) (cadr var)))
