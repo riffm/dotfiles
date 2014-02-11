@@ -68,6 +68,26 @@
   '(add-to-list 'flymake-allowed-file-name-masks
                 '("\\.py\\'" flymake-pyflakes-init)))
 
+(require 'semantic/ia)
+(defun activate-semantic-mode ()
+  (setq semantic-default-submodes
+        '(global-semanticdb-minor-mode
+          global-semantic-highlight-func-mode
+          global-semantic-idle-local-symbol-highlight-mode
+          global-semantic-idle-scheduler-mode
+          global-semantic-idle-completions-mode))
+  (semantic-mode 1)
+  (set-semantic-keys))
+
+(defun set-semantic-keys ()
+  (local-set-key [(control return)] 'semantic-ia-complete-symbol)
+  (local-set-key "." 'semantic-complete-self-insert))
+
+(defun setup-autocomplete ()
+  (add-to-list 'ac-sources 'ac-source-semantic))
+
+(add-hook 'java-mode-hook 'activate-semantic-mode)
+
 (setq gnutls-min-prime-bits nil)
 
 (defun add-curl-crt-bundle-to-gnutls-trustfiles ()
