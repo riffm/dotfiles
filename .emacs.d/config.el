@@ -90,10 +90,16 @@
 
 (setq gnutls-min-prime-bits nil)
 
+(setq gnutls-log-level 1)
+
 (defun add-curl-crt-bundle-to-gnutls-trustfiles ()
   (let ((f "/opt/local/share/curl/curl-ca-bundle.crt"))
     (when (and (eq system-type 'darwin) (file-exists-p f))
-        (add-to-list 'gnutls-trustfiles f))))
+      (add-to-list 'gnutls-trustfiles f))
+    (setq starttls-use-gnutls t
+          starttls-gnutls-program "gnutls-cli"
+          starttls-extra-arguments (list "--starttls"
+                                         (format "--x509cafile=%s" f)))))
 
 (package-initialize)
 
@@ -131,9 +137,10 @@
 (add-hook 'scala-mode-hook 'ensime-scala-mode-hook)
 
 (setq jabber-account-list
-      '(("riffm@rnd.stcnet.ru"
+      '(("riffm@rnd.stcnet.ru/emacs"
          (:network-server . "rnd.stcnet.ru")
-         (:connection-type . network))
+         (:connection-type . starttls)
+         (:port . 5222))
         ("riffm@jabber.ru/emacs"
          (:network-server . "jabber.ru")
          (:connection-type . ssl)

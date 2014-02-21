@@ -135,13 +135,22 @@
     (setq gnutls-min-prime-bits nil)
   #+end_src
 
+  More informative log level
+  #+begin_src emacs-lisp
+    (setq gnutls-log-level 1)
+  #+end_src
+
   Define helper function which adds certs file on mac os.
   Right now it is curl crt file
   #+begin_src emacs-lisp
     (defun add-curl-crt-bundle-to-gnutls-trustfiles ()
       (let ((f "/opt/local/share/curl/curl-ca-bundle.crt"))
         (when (and (eq system-type 'darwin) (file-exists-p f))
-            (add-to-list 'gnutls-trustfiles f))))
+          (add-to-list 'gnutls-trustfiles f))
+        (setq starttls-use-gnutls t
+              starttls-gnutls-program "gnutls-cli"
+              starttls-extra-arguments (list "--starttls"
+                                             (format "--x509cafile=%s" f)))))
   #+end_src
 * Custom packages
   Keep list of packages that needs to be installed
@@ -201,9 +210,10 @@
    Using multiple accounts
    #+begin_src emacs-lisp
      (setq jabber-account-list
-           '(("riffm@rnd.stcnet.ru"
+           '(("riffm@rnd.stcnet.ru/emacs"
               (:network-server . "rnd.stcnet.ru")
-              (:connection-type . network))
+              (:connection-type . starttls)
+              (:port . 5222))
              ("riffm@jabber.ru/emacs"
               (:network-server . "jabber.ru")
               (:connection-type . ssl)
