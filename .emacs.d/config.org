@@ -106,10 +106,38 @@
                     '("\\.py\\'" flymake-pyflakes-init)))
     
   #+end_src
+* CEDET
+  Semantic mode config as callable
+  #+begin_src emacs-lisp
+    (require 'semantic/ia)
+    (defun activate-semantic-mode ()
+      (setq semantic-default-submodes
+            '(global-semanticdb-minor-mode
+              global-semantic-highlight-func-mode
+              global-semantic-idle-local-symbol-highlight-mode
+              global-semantic-idle-scheduler-mode
+              global-semantic-idle-completions-mode))
+      (semantic-mode 1)
+      (set-semantic-keys))
+    
+    (defun set-semantic-keys ()
+      (local-set-key [(control return)] 'semantic-ia-complete-symbol)
+      (local-set-key "." 'semantic-complete-self-insert))
+    
+    (defun setup-autocomplete ()
+      (add-to-list 'ac-sources 'ac-source-semantic))
+    
+    (add-hook 'java-mode-hook 'activate-semantic-mode)
+  #+end_src
 * Gnutls
   Use default security level of the Diffie-Hellman key exchange
   #+begin_src emacs-lisp
     (setq gnutls-min-prime-bits nil)
+  #+end_src
+
+  More informative log level
+  #+begin_src emacs-lisp
+    (setq gnutls-log-level 1)
   #+end_src
 
   Define helper function which adds certs file on mac os.
@@ -118,7 +146,11 @@
     (defun add-curl-crt-bundle-to-gnutls-trustfiles ()
       (let ((f "/opt/local/share/curl/curl-ca-bundle.crt"))
         (when (and (eq system-type 'darwin) (file-exists-p f))
-            (add-to-list 'gnutls-trustfiles f))))
+          (add-to-list 'gnutls-trustfiles f))
+        (setq starttls-use-gnutls t
+              starttls-gnutls-program "gnutls-cli"
+              starttls-extra-arguments (list "--starttls"
+                                             (format "--x509cafile=%s" f)))))
   #+end_src
 * Custom packages
   Keep list of packages that needs to be installed
@@ -178,9 +210,10 @@
    Using multiple accounts
    #+begin_src emacs-lisp
      (setq jabber-account-list
-           '(("riffm@rnd.stcnet.ru"
+           '(("riffm@rnd.stcnet.ru/emacs"
               (:network-server . "rnd.stcnet.ru")
-              (:connection-type . network))
+              (:connection-type . starttls)
+              (:port . 5222))
              ("riffm@jabber.ru/emacs"
               (:network-server . "jabber.ru")
               (:connection-type . ssl)
