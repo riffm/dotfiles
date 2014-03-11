@@ -136,21 +136,25 @@
 (require 'ensime)
 (add-hook 'scala-mode-hook 'ensime-scala-mode-hook)
 
-(setq jabber-account-list
-      '(("riffm@rnd.stcnet.ru/emacs"
-         (:network-server . "rnd.stcnet.ru")
-         (:connection-type . starttls)
-         (:port . 5222))
-        ("riffm@jabber.ru/emacs"
-         (:network-server . "jabber.ru")
-         (:connection-type . ssl)
-         (:port . 5223))))
-
 (defun jabber ()
   (interactive)
   (require 'gnutls)
+  (load "~/secret.el.gpg")
   (add-curl-crt-bundle-to-gnutls-trustfiles)
-  (jabber-connect-all))
+  (setq jabber-account-list
+        `(("riffm@rnd.stcnet.ru/emacs"
+           (:network-server . "rnd.stcnet.ru")
+           (:password . ,riffm-at-rnd-stcnet-ru-passwd)
+           (:connection-type . starttls)
+           (:port . 5222))
+          ("riffm@jabber.ru/emacs"
+           (:network-server . "jabber.ru")
+           (:password . ,riffm-at-jabber-ru-passwd)
+           (:connection-type . ssl)
+           (:port . 5223))))
+  (jabber-connect-all)
+  (makunbound 'jabber-account-list)
+  (clear-secrets))
 
 (setq coffee-tab-width 2)
 
