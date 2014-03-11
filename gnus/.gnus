@@ -38,3 +38,8 @@
         (".*" (concat "nnfolder+archive:sent."
                       (format-time-string "%Y-%m"))))
       gnus-gcc-mark-as-read t)
+
+(setq mm-verify-option 'always
+      mm-decrypt-option 'always
+      mm-encrypt-option 'guided
+      mm-sign-option 'guided)
