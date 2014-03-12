@@ -1,50 +1,50 @@
 install: install-vim install-bash install-git install-hg install-tmux install-mutt install-emacs
 
 install-vim:
-	rm -rf ~/.vim ~/.vimrc ~/.ctags
-	ln -s `pwd`/vim ~/.vim
-	ln -s ~/.vim/vimrc ~/.vimrc
-	ln -s ~/.vim/ctags ~/.ctags
+	rm -rf $(HOME)/.vim $(HOME)/.vimrc $(HOME)/.ctags
+	ln -s $(PWD)/vim $(HOME)/.vim
+	ln -s $(HOME)/.vim/vimrc $(HOME)/.vimrc
+	ln -s $(HOME)/.vim/ctags $(HOME)/.ctags
 
 install-bash:
-	rm -f ~/.profile
-	ln -s `pwd`/bash/bashrc ~/.profile
+	rm -f $(HOME)/.profile
+	ln -s $(PWD)/bash/bashrc $(HOME)/.profile
 
 install-git:
-	rm -f ~/.gitconfig
-	ln -s `pwd`/git/config ~/.gitconfig
+	rm -f $(HOME)/.gitconfig
+	ln -s $(PWD)/git/config $(HOME)/.gitconfig
 
 install-hg:
 	# make sure you have Dulwich installed for hg-git
-	rm -f ~/.hgrc
-	ln -s `pwd`/hg/hgrc ~/.hgrc
+	rm -f $(HOME)/.hgrc
+	ln -s $(PWD)/hg/hgrc $(HOME)/.hgrc
 
 install-tmux:
-	rm -f ~/.tmux.conf
-	ln -s `pwd`/tmux.conf ~/.tmux.conf
+	rm -f $(HOME)/.tmux.conf
+	ln -s $(PWD)/tmux.conf $(HOME)/.tmux.conf
 
 install-mutt:
-	rm -rf ~/.mutt
-	ln -s `pwd`/mutt ~/.mutt
-	rm -f ~/.urlview
-	ln -s `pwd`/urlview ~/.urlview
-	rm -f ~/.notmuch-config
-	ln -s `pwd`/notmuch-config ~/.notmuch-config
-	rm -f ~/.msmtprc
-	ln -s `pwd`/msmtprc ~/.msmtprc
-	rm -f ~/.muttrc
-	ln -s `pwd`/muttrc ~/.muttrc
-	rm -f ~/.offlineimaprc
-	ln -s `pwd`/offlineimaprc ~/.offlineimaprc
+	rm -rf $(HOME)/.mutt
+	ln -s $(PWD)/mutt $(HOME)/.mutt
+	rm -f $(HOME)/.urlview
+	ln -s $(PWD)/urlview $(HOME)/.urlview
+	rm -f $(HOME)/.notmuch-config
+	ln -s $(PWD)/notmuch-config $(HOME)/.notmuch-config
+	rm -f $(HOME)/.msmtprc
+	ln -s $(PWD)/msmtprc $(HOME)/.msmtprc
+	rm -f $(HOME)/.muttrc
+	ln -s $(PWD)/muttrc $(HOME)/.muttrc
+	rm -f $(HOME)/.offlineimaprc
+	ln -s $(PWD)/offlineimaprc $(HOME)/.offlineimaprc
 
 install-emacs:
-	rm -rf ~/.emacs.d
-	ln -s `pwd`/.emacs.d ~/.emacs.d
+	rm -rf $(HOME)/.emacs.d
+	ln -s $(PWD)/.emacs.d $(HOME)/.emacs.d
 
 install-gnus: install-emacs
-	rm -rf ~/.gnus
-	ln -s `pwd`/gnus/.gnus ~/.gnus
-	rm -rf ~/.newsrc
-	ln -s `pwd`/gnus/.newsrc ~/.newsrc
-	rm -rf ~/.newsrc.eld
-	ln -s `pwd`/gnus/.newsrc.eld ~/.newsrc.eld
+	rm -rf $(HOME)/.gnus
+	ln -s $(PWD)/gnus/.gnus $(HOME)/.gnus
+	rm -rf $(HOME)/.newsrc
+	ln -s $(PWD)/gnus/.newsrc $(HOME)/.newsrc
+	rm -rf $(HOME)/.newsrc.eld
+	ln -s $(PWD)/gnus/.newsrc.eld $(HOME)/.newsrc.eld
