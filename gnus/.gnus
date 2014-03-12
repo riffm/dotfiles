@@ -34,7 +34,12 @@
                 ("stcnet:.*" (address "riffm@rnd.stcnet.ru"))))
 
 (setq gnus-message-archive-group
-      '(("stcnet:.*" "nnmaildir+stcnet:Sent Messages")
+      '(("^nnmaildir\\+stcnet:" "nnmaildir+stcnet:Sent Messages")
         (".*" (concat "nnfolder+archive:sent."
                       (format-time-string "%Y-%m"))))
       gnus-gcc-mark-as-read t)
+
+(setq mm-verify-option 'always
+      mm-decrypt-option 'always
+      mm-encrypt-option 'guided
+      mm-sign-option 'guided)
