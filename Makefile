@@ -10,6 +10,10 @@ install-bash:
 	rm -f $(HOME)/.profile
 	ln -s $(PWD)/bash/bashrc $(HOME)/.profile
 
+install-zsh:
+	rm -f $(HOME)/.zshrc
+	ln -s $(PWD)/.zshrc $(HOME)/.zshrc
+
 install-git:
 	rm -f $(HOME)/.gitconfig
 	ln -s $(PWD)/git/config $(HOME)/.gitconfig
