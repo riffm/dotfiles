@@ -93,13 +93,15 @@
 (setq gnutls-log-level 1)
 
 (defun add-curl-crt-bundle-to-gnutls-trustfiles ()
-  (let ((f "/opt/local/share/curl/curl-ca-bundle.crt"))
-    (when (and (eq system-type 'darwin) (file-exists-p f))
-      (add-to-list 'gnutls-trustfiles f))
-    (setq starttls-use-gnutls t
-          starttls-gnutls-program "gnutls-cli"
-          starttls-extra-arguments (list "--starttls"
-                                         (format "--x509cafile=%s" f)))))
+  (let ((f (cond
+            ((eq system-type 'darwin) "/opt/local/share/curl/curl-ca-bundle.crt")
+            ((eq system-type 'berkeley-unix) "/usr/local/share/certs/ca-root-nss.crt"))))
+    (when (file-exists-p f)
+      (add-to-list 'gnutls-trustfiles f)
+      (setq starttls-use-gnutls t
+            starttls-gnutls-program "gnutls-cli"
+            starttls-extra-arguments (list "--starttls"
+                                           (format "--x509cafile=%s" f))))))
 
 (package-initialize)
 
