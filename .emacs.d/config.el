@@ -101,6 +101,11 @@
           starttls-extra-arguments (list "--starttls"
                                          (format "--x509cafile=%s" f)))))
 
+(let ((f "InconsolataLGC-13"))
+  (if (and (display-graphic-p)
+           (not (null (x-list-fonts f))))
+      (set-default-font f)))
+
 (package-initialize)
 
 (defvar emacs-pkgs
