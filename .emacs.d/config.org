@@ -162,11 +162,6 @@
                (not (null (x-list-fonts f))))
           (set-default-font f)))
   #+end_src
-* BBDB
-  #+begin_src emacs-lisp
-    (add-hook 'gnus-startup-hook 'bbdb-insinuate-gnus)
-    (add-hook 'gnus-startup-hook 'bbdb-insinuate-message)
-  #+end_src
 * Custom packages
   Keep list of packages that needs to be installed
   and updated
@@ -267,6 +262,18 @@
                      (define-key tuareg-mode-map
                        (kbd "C-M-i") 'utop-edit-complete))))
    #+end_src
+* BBDB
+  #+begin_src emacs-lisp
+    (require 'bbdb)
+    (setq
+     bbdb-file "~/Dropbox/bbdb"
+     bbdb-mua-auto-update-p 'query)
+    (bbdb-initialize 'gnus 'message)
+    (bbdb-mua-auto-update-init 'gnus 'message)
+    (add-hook 'gnus-startup-hook 'bbdb-insinuate-gnus)
+    (add-hook 'gnus-startup-hook 'bbdb-insinuate-message)
+    
+  #+end_src
 * Mail
 ** smtp
   Using `msmtp` as a smtp client program

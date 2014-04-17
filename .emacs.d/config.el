@@ -108,9 +108,6 @@
            (not (null (x-list-fonts f))))
       (set-default-font f)))
 
-(add-hook 'gnus-startup-hook 'bbdb-insinuate-gnus)
-(add-hook 'gnus-startup-hook 'bbdb-insinuate-message)
-
 (package-initialize)
 
 (defvar emacs-pkgs
@@ -182,6 +179,15 @@
             #'(lambda ()
                 (define-key tuareg-mode-map
                   (kbd "C-M-i") 'utop-edit-complete))))
+
+(require 'bbdb)
+(setq
+ bbdb-file "~/Dropbox/bbdb"
+ bbdb-mua-auto-update-p 'query)
+(bbdb-initialize 'gnus 'message)
+(bbdb-mua-auto-update-init 'gnus 'message)
+(add-hook 'gnus-startup-hook 'bbdb-insinuate-gnus)
+(add-hook 'gnus-startup-hook 'bbdb-insinuate-message)
 
 (setq message-send-mail-function 'message-send-mail-with-sendmail
       sendmail-program "msmtp"
