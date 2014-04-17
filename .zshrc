@@ -13,3 +13,5 @@ zstyle ':completion:*' menu select=2
 zstyle ':completion:*' completer _expand _complete _ignored _approximate
 zstyle ':completion::complete:*' use-cache 1
 setopt completealiases
+
+. $HOME/dotfiles/gpg-agent-init

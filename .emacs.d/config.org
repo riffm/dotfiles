@@ -144,13 +144,15 @@
   Right now it is curl crt file
   #+begin_src emacs-lisp
     (defun add-curl-crt-bundle-to-gnutls-trustfiles ()
-      (let ((f "/opt/local/share/curl/curl-ca-bundle.crt"))
-        (when (and (eq system-type 'darwin) (file-exists-p f))
-          (add-to-list 'gnutls-trustfiles f))
-        (setq starttls-use-gnutls t
-              starttls-gnutls-program "gnutls-cli"
-              starttls-extra-arguments (list "--starttls"
-                                             (format "--x509cafile=%s" f)))))
+      (let ((f (cond
+                ((eq system-type 'darwin) "/opt/local/share/curl/curl-ca-bundle.crt")
+                ((eq system-type 'berkeley-unix) "/usr/local/share/certs/ca-root-nss.crt"))))
+        (when (file-exists-p f)
+          (add-to-list 'gnutls-trustfiles f)
+          (setq starttls-use-gnutls t
+                starttls-gnutls-program "gnutls-cli"
+                starttls-extra-arguments (list "--starttls"
+                                               (format "--x509cafile=%s" f))))))
   #+end_src
 * Font setting
   Using `Inconsolata LGC` font if possible.
@@ -159,6 +161,11 @@
       (if (and (display-graphic-p)
                (not (null (x-list-fonts f))))
           (set-default-font f)))
+  #+end_src
+* BBDB
+  #+begin_src emacs-lisp
+    (add-hook 'gnus-startup-hook 'bbdb-insinuate-gnus)
+    (add-hook 'gnus-startup-hook 'bbdb-insinuate-message)
   #+end_src
 * Custom packages
   Keep list of packages that needs to be installed
