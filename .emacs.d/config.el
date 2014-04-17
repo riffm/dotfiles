@@ -108,6 +108,9 @@
            (not (null (x-list-fonts f))))
       (set-default-font f)))
 
+(add-hook 'gnus-startup-hook 'bbdb-insinuate-gnus)
+(add-hook 'gnus-startup-hook 'bbdb-insinuate-message)
+
 (package-initialize)
 
 (defvar emacs-pkgs

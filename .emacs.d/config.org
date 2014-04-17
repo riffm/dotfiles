@@ -162,6 +162,11 @@
                (not (null (x-list-fonts f))))
           (set-default-font f)))
   #+end_src
+* BBDB
+  #+begin_src emacs-lisp
+    (add-hook 'gnus-startup-hook 'bbdb-insinuate-gnus)
+    (add-hook 'gnus-startup-hook 'bbdb-insinuate-message)
+  #+end_src
 * Custom packages
   Keep list of packages that needs to be installed
   and updated
