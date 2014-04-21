@@ -49,23 +49,6 @@
           (delete-file file))))
   #+end_src
 
-* Flymake
-  Here is only initialization of the mode. Specific tuning is placed inside languages configs
-  #+begin_src emacs-lisp
-    (add-hook 'find-file-hook 'flymake-find-file-hook)
-    
-    (eval-after-load "flymake"
-      '(progn
-         (local-set-key "\M-n" 'flymake-goto-next-error)
-         (local-set-key "\M-p" 'flymake-goto-prev-error)))
-  #+end_src
-
-  To remove annoying errors while typing code we do not check on a new line
-  and increasing default check timeout:
-  #+begin_src emacs-lisp
-    (setf flymake-no-changes-timeout 20
-          flymake-start-syntax-check-on-newline nil)
-  #+end_src
 * Whitespaces and tabs
   Show all trailing whitespaces. Show tabs.
   Use spaces over tabs. Show trailing empty lines.
@@ -195,7 +178,22 @@
    #+begin_src emacs-lisp
      (add-hook 'haskell-mode-hook 'turn-on-haskell-doc-mode)
      (add-hook 'haskell-mode-hook 'turn-on-haskell-indentation)
-     (add-hook 'haskell-mode-hook 'flymake-haskell-multi-load)
+     (add-hook 'haskell-mode-hook 'turn-on-haskell-decl-scan)
+     
+     (eval-after-load "haskell-mode"
+       '(progn
+          (define-key haskell-mode-map (kbd "C-x C-d") nil)
+          (define-key haskell-mode-map (kbd "C-c C-z") 'haskell-interactive-switch)
+          (define-key haskell-mode-map (kbd "C-c C-l") 'haskell-process-load-file)
+          (define-key haskell-mode-map (kbd "C-c C-b") 'haskell-interactive-switch)
+          (define-key haskell-mode-map (kbd "C-c C-t") 'haskell-process-do-type)
+          (define-key haskell-mode-map (kbd "C-c C-i") 'haskell-process-do-info)
+          (define-key haskell-mode-map (kbd "C-c M-.") nil)
+          (define-key haskell-mode-map (kbd "C-c C-d") nil)
+          (define-key haskell-mode-map (kbd "C-c C-c") 'haskell-compile)))
+     
+     (eval-after-load "haskell-cabal"
+         '(define-key haskell-cabal-mode-map (kbd "C-c C-c") 'haskell-compile))
    #+end_src
 ** clojure
    CIDER IDE
@@ -302,4 +300,15 @@
     
     (setq message-sendmail-envelope-from 'header)
     (add-hook 'message-send-mail-hook 'choose-msmtp-account)
+  #+end_src
+* Flycheck
+  Enable flycheck globally
+  #+begin_src emacs-lisp
+    (add-hook 'after-init-hook #'global-flycheck-mode)
+  #+end_src
+
+  Haskell support
+  #+begin_src emacs-lisp
+    (eval-after-load 'flycheck
+      '(add-hook 'flycheck-mode-hook #'flycheck-haskell-setup))
   #+end_src
