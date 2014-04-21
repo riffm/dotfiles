@@ -19,6 +19,7 @@
  '(global-font-lock-mode t)
  '(global-linum-mode nil)
  '(global-visual-line-mode t)
+ '(haskell-process-type (quote cabal-repl))
  '(ido-enable-flex-matching t)
  '(ido-mode (quote both) nil (ido))
  '(setq-default case-fold-search)
