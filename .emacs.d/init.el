@@ -22,6 +22,7 @@
  '(haskell-process-type (quote cabal-repl))
  '(ido-enable-flex-matching t)
  '(ido-mode (quote both) nil (ido))
+ '(ledger-reports (quote (("april" "ledger -f 2014.dat bal ^expenses:") ("aprit" "ledger ") ("bal" "ledger -f %(ledger-file) bal") ("reg" "ledger -f %(ledger-file) reg") ("payee" "ledger -f %(ledger-file) reg @%(payee)") ("account" "ledger -f %(ledger-file) reg %(account)"))))
  '(setq-default case-fold-search)
  '(show-paren-mode t))
 (custom-set-faces
