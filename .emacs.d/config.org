@@ -53,19 +53,20 @@
   Show all trailing whitespaces. Show tabs.
   Use spaces over tabs. Show trailing empty lines.
   #+begin_src emacs-lisp
-    (setq-default indent-tabs-mode nil)
-    (setq-default indicate-empty-lines t)
-    (setq show-trailing-whitespace t)
-    (autoload 'whitespace-mode
-      "whitespace"
-      "Toggle whitespace visualization."
-      t)
-    (autoload 'whitespace-toggle-options
-      "whitespace"
-      "Toggle local `whitespace-mode' options."
-      t)
-    (setq whitespace-style '(face trailing tabs empty tab-mark))
-    (add-hook 'prog-mode-hook #'(lambda () (whitespace-mode t)))
+        (setq-default indent-tabs-mode nil)
+        (setq-default indicate-empty-lines t)
+        (setq show-trailing-whitespace t)
+        (autoload 'whitespace-mode
+          "whitespace"
+          "Toggle whitespace visualization."
+          t)
+        (autoload 'whitespace-toggle-options
+          "whitespace"
+          "Toggle local `whitespace-mode' options."
+          t)
+        (setq whitespace-style '(face trailing tabs empty tab-mark
+                                      lines-tail))
+        (add-hook 'prog-mode-hook #'(lambda () (whitespace-mode t)))
   #+end_src
 
 * Tramp

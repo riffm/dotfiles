@@ -41,7 +41,8 @@
   "whitespace"
   "Toggle local `whitespace-mode' options."
   t)
-(setq whitespace-style '(face trailing tabs empty tab-mark))
+(setq whitespace-style '(face trailing tabs empty tab-mark
+                              lines-tail))
 (add-hook 'prog-mode-hook #'(lambda () (whitespace-mode t)))
 
 (setq tramp-default-method "ssh")
