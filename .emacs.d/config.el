@@ -220,3 +220,30 @@
 
 (eval-after-load 'flycheck
   '(add-hook 'flycheck-mode-hook #'flycheck-haskell-setup))
+
+(setq org-log-done 'time)
+(define-key mode-specific-map [?a] 'org-agenda)
+(custom-set-variables
+ '(org-agenda-files (quote ("~/Dropbox/tasks.org")))
+ '(org-default-notes-file "~/Dropbox/notes.org")
+ '(org-agenda-show-all-dates t)
+ '(org-agenda-start-on-weekday nil)
+ '(org-deadline-warning-days 2)
+ '(org-agenda-show-all-dates t)
+ '(org-agenda-skip-deadline-if-done t)
+      '(org-agenda-skip-scheduled-if-done t))
+
+(custom-set-variables
+ '(org-todo-keywords
+   '((sequence "TODO(t)" "STARTED(s!)" "WAITING(w@)" "DELEGATED(l@)"
+               "|" "DONE(d!)" "DEFERRED(f@)" "CANCELLED(x@)"))))
+
+(add-hook 'remember-mode-hook 'org-remember-apply-template)
+(define-key global-map [(control ?x) ( meta ?r)] 'remember)
+(custom-set-variables
+ '(org-remember-store-without-prompt t)
+ '(org-remember-templates
+   (quote ((116 "* TODO %?\n  %u" "~/Dropbox/tasks.org" "Tasks")
+           (110 "* %u %?" "~/Dropbox/notes.org" "Notes"))))
+ '(remember-annotation-functions (quote (org-remember-annotation)))
+ '(remember-handler-functions (quote (org-remember-handler))))
