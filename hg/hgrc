@@ -1,20 +1,26 @@
 [ui]
 username=Tim Perevezentsev <riffm2005@gmail.com>
-logtemplate = '(\033[01;30m{node|short}\033[m|{phase}|{date|shortdate}) on \033[01;30m{branch}:{bookmarks}\033[m by \033[01;30m{author|user}\033[m{if(tags,'\n(tags: {tags})', '')}\n{desc|fill68}\n\n'
+merge = emacs
 
 [extensions]
 mq =
 pager =
-graphlog =
 color =
 record =
 bookmarks =
 rebase =
-;hggit = ~/dotfiles/hg/hg-git/hggit
+review = ~/hg-review/review/
+guestrepo = ~/guestrepo/guestrepo
 
 [pager]
 pager = less -R
-attend = annotate, cat, diff, export, glog, log, qdiff
+attend = annotate, cat, diff, export, glog, log, qdiff, slog
 
 [mq]
 secret=true
+
+[alias]
+slog = log -G --template '{rev}:{node|short}:({bookmarks}) {desc|firstline}\n'
+
+[merge-tools]
+emacs.args = -q --eval "(ediff-merge-with-ancestor \""$local"\" \""$other"\" \""$base"\" nil \""$output"\")"
