@@ -323,7 +323,7 @@
      '(org-default-notes-file "~/Dropbox/notes.org")
      '(org-agenda-show-all-dates t)
      '(org-agenda-start-on-weekday nil)
-     '(org-deadline-warning-days 2)
+     '(org-deadline-warning-days 14)
      '(org-agenda-show-all-dates t)
      '(org-agenda-skip-deadline-if-done t)
           '(org-agenda-skip-scheduled-if-done t))
@@ -336,6 +336,18 @@
                    "|" "DONE(d!)" "DEFERRED(f@)" "CANCELLED(x@)"))))
     
    #+END_SRC
+  Babel config
+  #+BEGIN_SRC emacs-lisp
+    (org-babel-do-load-languages
+     'org-babel-load-languages
+     '((emacs-lisp . t)
+       (plantuml . t)))
+    
+    (custom-set-variables
+     '(org-plantuml-jar-path "~/Dropbox/bin/plantuml.jar"))
+    
+    (add-to-list 'org-src-lang-modes (quote ("plantuml" . fundamental)))
+  #+END_SRC
 
 ** remember
    Using global shortcut

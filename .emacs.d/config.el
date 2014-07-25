@@ -229,7 +229,7 @@
  '(org-default-notes-file "~/Dropbox/notes.org")
  '(org-agenda-show-all-dates t)
  '(org-agenda-start-on-weekday nil)
- '(org-deadline-warning-days 2)
+ '(org-deadline-warning-days 14)
  '(org-agenda-show-all-dates t)
  '(org-agenda-skip-deadline-if-done t)
       '(org-agenda-skip-scheduled-if-done t))
@@ -238,6 +238,16 @@
  '(org-todo-keywords
    '((sequence "TODO(t)" "STARTED(s!)" "WAITING(w@)" "DELEGATED(l@)"
                "|" "DONE(d!)" "DEFERRED(f@)" "CANCELLED(x@)"))))
+
+(org-babel-do-load-languages
+ 'org-babel-load-languages
+ '((emacs-lisp . t)
+   (plantuml . t)))
+
+(custom-set-variables
+ '(org-plantuml-jar-path "~/Dropbox/bin/plantuml.jar"))
+
+(add-to-list 'org-src-lang-modes (quote ("plantuml" . fundamental)))
 
 (add-hook 'remember-mode-hook 'org-remember-apply-template)
 (define-key global-map [(control ?x) ( meta ?r)] 'remember)
