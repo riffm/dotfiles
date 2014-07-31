@@ -362,7 +362,8 @@
        (plantuml . t)))
     
     (custom-set-variables
-     '(org-plantuml-jar-path "~/Dropbox/bin/plantuml.jar"))
+     '(org-plantuml-jar-path "~/Dropbox/bin/plantuml.jar")
+     '(org-confirm-babel-evaluate nil))
     
     (add-to-list 'org-src-lang-modes (quote ("plantuml" . fundamental)))
   #+END_SRC
