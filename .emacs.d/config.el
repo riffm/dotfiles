@@ -224,10 +224,12 @@
 
 (setq org-log-done 'time)
 (define-key mode-specific-map [?a] 'org-agenda)
+
 (custom-set-variables
- '(org-agenda-files (quote ("~/Dropbox/tasks.org"
-                            "~/Dropbox/tasks.org_archive")))
- '(org-default-notes-file "~/Dropbox/notes.org")
+ '(org-directory "~/org")
+ '(org-agenda-files (quote ("~/org/tasks.org"
+                            "~/org/tasks.org_archive")))
+ '(org-default-notes-file "~/org/notes.org")
  '(org-agenda-show-all-dates t)
  '(org-agenda-start-on-weekday nil)
  '(org-deadline-warning-days 14)
@@ -250,7 +252,7 @@
                                           (quote regexp) "\n]+>")))
              (org-agenda-overriding-header "Unscheduled TODO entries: "))))))
  '(org-agenda-skip-deadline-if-done t)
-      '(org-agenda-skip-scheduled-if-done t))
+ '(org-agenda-skip-scheduled-if-done t))
 
 (custom-set-variables
  '(org-todo-keywords
@@ -268,12 +270,24 @@
 
 (add-to-list 'org-src-lang-modes (quote ("plantuml" . fundamental)))
 
+;(custom-set-variables
+; '(org-refile-targets
+;   (quote ((nil :maxlevel . 3)
+;           (org-agenda-files :maxlevel . 3)
+;           (org-default-notes-file :maxlevel . 3))))
+; '(org-refile-use-outline-path 'file)
+; '(org-refile-allow-creating-parent-nodes 'confirm))
+
+(custom-set-variables
+ '(org-mobile-inbox-for-pull "~/org/from-mobile.org")
+ '(org-mobile-directory "~/Dropbox/Apps/MobileOrg"))
+
 (add-hook 'remember-mode-hook 'org-remember-apply-template)
 (define-key global-map [(control ?x) ( meta ?r)] 'remember)
 (custom-set-variables
  '(org-remember-store-without-prompt t)
  '(org-remember-templates
-   (quote ((116 "* TODO %?\n  %u" "~/Dropbox/tasks.org" "Tasks")
-           (110 "* %u %?" "~/Dropbox/notes.org" "Notes"))))
+   (quote ((116 "* TODO %?\n  %u" "~/org/tasks.org" "Tasks")
+           (110 "* %u %?" "~/org/notes.org" "Notes"))))
  '(remember-annotation-functions (quote (org-remember-annotation)))
  '(remember-handler-functions (quote (org-remember-handler))))
