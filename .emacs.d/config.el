@@ -223,27 +223,70 @@
 
 (setq org-log-done 'time)
 (define-key mode-specific-map [?a] 'org-agenda)
+
 (custom-set-variables
- '(org-agenda-files (quote ("~/Dropbox/tasks.org")))
- '(org-default-notes-file "~/Dropbox/notes.org")
+ '(org-directory "~/org")
+ '(org-agenda-files (quote ("~/org/tasks.org"
+                            "~/org/tasks.org_archive")))
+ '(org-default-notes-file "~/org/notes.org")
  '(org-agenda-show-all-dates t)
  '(org-agenda-start-on-weekday nil)
- '(org-deadline-warning-days 2)
+ '(org-deadline-warning-days 14)
  '(org-agenda-show-all-dates t)
+ '(org-agenda-custom-commands
+   (quote (("d" todo "DELEGATED" nil)
+           ("c" todo "DONE|DEFERRED|CANCELLED" nil)
+           ("w" todo "WAITING" nil)
+           ("W" agenda "" ((org-agenda-ndays 21)))
+           ("A" agenda ""
+            ((org-agenda-skip-function
+              (lambda nil
+                (org-agenda-skip-entry-if (quote notregexp) "\\=.*\\[#A\\]")))
+             (org-agenda-ndays 1)
+             (org-agenda-overriding-header "Today's Priority #A tasks: ")))
+           ("u" alltodo ""
+            ((org-agenda-skip-function
+              (lambda nil
+                (org-agenda-skip-entry-if (quote scheduled) (quote deadline)
+                                          (quote regexp) "\n]+>")))
+             (org-agenda-overriding-header "Unscheduled TODO entries: "))))))
  '(org-agenda-skip-deadline-if-done t)
-      '(org-agenda-skip-scheduled-if-done t))
+ '(org-agenda-skip-scheduled-if-done t))
 
 (custom-set-variables
  '(org-todo-keywords
    '((sequence "TODO(t)" "STARTED(s!)" "WAITING(w@)" "DELEGATED(l@)"
                "|" "DONE(d!)" "DEFERRED(f@)" "CANCELLED(x@)"))))
 
+(org-babel-do-load-languages
+ 'org-babel-load-languages
+ '((emacs-lisp . t)
+   (plantuml . t)))
+
+(custom-set-variables
+ '(org-plantuml-jar-path "~/Dropbox/bin/plantuml.jar")
+ '(org-confirm-babel-evaluate nil))
+
+(add-to-list 'org-src-lang-modes (quote ("plantuml" . fundamental)))
+
+;(custom-set-variables
+; '(org-refile-targets
+;   (quote ((nil :maxlevel . 3)
+;           (org-agenda-files :maxlevel . 3)
+;           (org-default-notes-file :maxlevel . 3))))
+; '(org-refile-use-outline-path 'file)
+; '(org-refile-allow-creating-parent-nodes 'confirm))
+
+(custom-set-variables
+ '(org-mobile-inbox-for-pull "~/org/from-mobile.org")
+ '(org-mobile-directory "~/Dropbox/Apps/MobileOrg"))
+
 (add-hook 'remember-mode-hook 'org-remember-apply-template)
 (define-key global-map [(control ?x) ( meta ?r)] 'remember)
 (custom-set-variables
  '(org-remember-store-without-prompt t)
  '(org-remember-templates
-   (quote ((116 "* TODO %?\n  %u" "~/Dropbox/tasks.org" "Tasks")
-           (110 "* %u %?" "~/Dropbox/notes.org" "Notes"))))
+   (quote ((116 "* TODO %?\n  %u" "~/org/tasks.org" "Tasks")
+           (110 "* %u %?" "~/org/notes.org" "Notes"))))
  '(remember-annotation-functions (quote (org-remember-annotation)))
  '(remember-handler-functions (quote (org-remember-handler))))
