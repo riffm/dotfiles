@@ -9,8 +9,6 @@ color =
 record =
 bookmarks =
 rebase =
-review = ~/hg-review/review/
-guestrepo = ~/guestrepo/guestrepo
 
 [pager]
 pager = less -R
