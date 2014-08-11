@@ -212,7 +212,6 @@
 *** ensime
     Start ensime server on scala mode init
     #+begin_src emacs-lisp
-      (require 'ensime)
       (add-hook 'scala-mode-hook 'ensime-scala-mode-hook)
     #+end_src
 ** jabber
