@@ -43,3 +43,10 @@
       mm-decrypt-option 'always
       mm-encrypt-option 'guided
       mm-sign-option 'guided)
+
+(setq gnus-parameters
+      '(("nnmaildir.*"
+         (gcc-self . t)
+         (display . all))
+        ("INBOX.rnd"
+         (display . all))))

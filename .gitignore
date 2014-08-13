@@ -12,4 +12,6 @@ gnus/.newsrc*
 .emacs.d/url/
 .emacs.d/elpa/archives/
 .emacs.d/jabber-avatar-cache
+.emacs.d/tramp
 .emacs.d/semanticdb
+.emacs.d/bookmarks

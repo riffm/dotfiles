@@ -10,6 +10,7 @@ for directory in $HOME/Library/Haskell/bin \
                  /opt/local/sbin \
                  $HOME/Library/Python/2.7/bin \
                  $HOME/.local/bin \
+                 $HOME/.cabal/bin \
                  $HOME/bin;
 
 do
